@@ -1,0 +1,916 @@
+﻿{
+  "alquran": [
+      {
+          "nomor": "Surat ke-1 dalam Al Qur'an",
+          "nama": "Al-Fatihah",
+          "arabic": "الفاتحة",
+          "arti_nama": "Pembukaan",
+          "jumlah_ayat": "Terdiri atas 7 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-2 dalam Al Qur'an",
+          "nama": "Al-Baqarah",
+          "arabic": "البقرة",
+          "arti_nama": "Sapi Betina",
+          "jumlah_ayat": "Terdiri atas 286 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-3 dalam Al Qur'an",
+          "nama": "Ali 'Imran",
+          "arabic": "آل عمران",
+          "arti_nama": "Keluarga 'Imran",
+          "jumlah_ayat": "Terdiri atas 200 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-4 dalam Al Qur'an",
+          "nama": "An-Nisa'",
+          "arabic": "النّساء",
+          "arti_nama": "Wanita",
+          "jumlah_ayat": "Terdiri atas 176 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-5 dalam Al Qur'an",
+          "nama": "Al-Ma'idah",
+          "arabic": "المائدة",
+          "arti_nama": "Jamuan (hidangan makanan)",
+          "jumlah_ayat": "Terdiri atas 120 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-6 dalam Al Qur'an",
+          "nama": "Al-An'am",
+          "arabic": "الانعام",
+          "arti_nama": "Hewan Ternak",
+          "jumlah_ayat": "Terdiri atas 165 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-7 dalam Al Qur'an",
+          "nama": "Al-A’raf",
+          "arabic": "الأعراف",
+          "arti_nama": "Tempat yang tertinggi",
+          "jumlah_ayat": "Terdiri atas 206 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-8 dalam Al Qur'an",
+          "nama": "Al-Anfal",
+          "arabic": "الأنفال",
+          "arti_nama": "Harta rampasan perang",
+          "jumlah_ayat": "Terdiri atas 75 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-9 dalam Al Qur'an",
+          "nama": "At-Taubah",
+          "arabic": "التوبة‎‎",
+          "arti_nama": "Pengampunan",
+          "jumlah_ayat": "Terdiri atas 129 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-10 dalam Al Qur'an",
+          "nama": "Yunus",
+          "arabic": "يونس",
+          "arti_nama": "Nabi Yunus",
+          "jumlah_ayat": "Terdiri atas 109 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-11 dalam Al Qur'an",
+          "nama": "Hud",
+          "arabic": "هود",
+          "arti_nama": "Nabi Hud",
+          "jumlah_ayat": "Terdiri atas 123 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-12 dalam Al Qur'an",
+          "nama": "Yusuf",
+          "arabic": "يوسف",
+          "arti_nama": "Nabi Yusuf",
+          "jumlah_ayat": "Terdiri atas 111 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-13 dalam Al Qur'an",
+          "nama": "Ar-Ra’d",
+          "arabic": "الرعد",
+          "arti_nama": "Guruh (petir)",
+          "jumlah_ayat": "Terdiri atas 43 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-14 dalam Al Qur'an",
+          "nama": "Ibrahim",
+          "arabic": "إبراهيم",
+          "arti_nama": "Nabi Ibrahim",
+          "jumlah_ayat": "Terdiri atas 52 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-15 dalam Al Qur'an",
+          "nama": "Al-Hijr",
+          "arabic": "الحجر",
+          "arti_nama": "Gunung Al Hijr",
+          "jumlah_ayat": "Terdiri atas 99 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-16 dalam Al Qur'an",
+          "nama": "An-Nahl",
+          "arabic": "النحل",
+          "arti_nama": "Lebah",
+          "jumlah_ayat": "Terdiri atas 128 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-17 dalam Al Qur'an",
+          "nama": "Al-Isra'",
+          "arabic": "الإسراء",
+          "arti_nama": "Perjalanan Malam",
+          "jumlah_ayat": "Terdiri atas 111 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-18 dalam Al Qur'an",
+          "nama": "Al-Kahf",
+          "arabic": "الكهف",
+          "arti_nama": "Penghuni-penghuni Gua",
+          "jumlah_ayat": "Terdiri atas 110 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-19 dalam Al Qur'an",
+          "nama": "Maryam",
+          "arabic": "مريم",
+          "arti_nama": "Maryam (Maria)",
+          "jumlah_ayat": "Terdiri atas 98 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-20 dalam Al Qur'an",
+          "nama": "Ta Ha",
+          "arabic": "طه",
+          "arti_nama": "Ta Ha",
+          "jumlah_ayat": "Terdiri atas 135 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-21 dalam Al Qur'an",
+          "nama": "Al-Anbiya",
+          "arabic": "الأنبياء",
+          "arti_nama": "Nabi-Nabi",
+          "jumlah_ayat": "Terdiri atas 112 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-22 dalam Al Qur'an",
+          "nama": "Al-Hajj",
+          "arabic": "الحجّ",
+          "arti_nama": "Haji",
+          "jumlah_ayat": "Terdiri atas 78 ayat",
+          "tempat_turun": "Diturunkan di Madinah & Makkah"
+      },
+      {
+          "nomor": "Surat ke-23 dalam Al Qur'an",
+          "nama": "Al-Mu’minun",
+          "arabic": "المؤمنون",
+          "arti_nama": "Orang-orang mukmin",
+          "jumlah_ayat": "Terdiri atas 118 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-24 dalam Al Qur'an",
+          "nama": "An-Nur",
+          "arabic": "النور",
+          "arti_nama": "Cahaya",
+          "jumlah_ayat": "Terdiri atas 64 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-25 dalam Al Qur'an",
+          "nama": "Al-Furqan",
+          "arabic": "الفرقان",
+          "arti_nama": "Pembeda",
+          "jumlah_ayat": "Terdiri atas 77 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-26 dalam Al Qur'an",
+          "nama": "Asy-Syu'ara'",
+          "arabic": "الشعراء",
+          "arti_nama": "Penyair",
+          "jumlah_ayat": "Terdiri atas 227 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-27 dalam Al Qur'an",
+          "nama": "An-Naml",
+          "arabic": "النمل",
+          "arti_nama": "Semut",
+          "jumlah_ayat": "Terdiri atas 93 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-28 dalam Al Qur'an",
+          "nama": "Al-Qasas",
+          "arabic": "القصص",
+          "arti_nama": "Kisah",
+          "jumlah_ayat": "Terdiri atas 88 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-29 dalam Al Qur'an",
+          "nama": "Al-'Ankabut",
+          "arabic": "العنكبوت",
+          "arti_nama": "Laba-laba",
+          "jumlah_ayat": "Terdiri atas 69 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-30 dalam Al Qur'an",
+          "nama": "Ar-Rum",
+          "arabic": "الروم",
+          "arti_nama": "Bangsa Romawi",
+          "jumlah_ayat": "Terdiri atas 60 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-31 dalam Al Qur'an",
+          "nama": "Luqman",
+          "arabic": "لقمان",
+          "arti_nama": "Keluarga Luqman",
+          "jumlah_ayat": "Terdiri atas 34 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-32 dalam Al Qur'an",
+          "nama": "As-Sajdah",
+          "arabic": "السجدة",
+          "arti_nama": "Sajdah",
+          "jumlah_ayat": "Terdiri atas 30 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-33 dalam Al Qur'an",
+          "nama": "Al-Ahzab",
+          "arabic": "الْأحزاب",
+          "arti_nama": "Golongan-Golongan yang bersekutu",
+          "jumlah_ayat": "Terdiri atas 73 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-34 dalam Al Qur'an",
+          "nama": "Saba’",
+          "arabic": "سبأ",
+          "arti_nama": "Kaum Saba'",
+          "jumlah_ayat": "Terdiri atas 54 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-35 dalam Al Qur'an",
+          "nama": "Fatir",
+          "arabic": "فاطر",
+          "arti_nama": "Pencipta",
+          "jumlah_ayat": "Terdiri atas 45 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-36 dalam Al Qur'an",
+          "nama": "Ya Sin",
+          "arabic": "يس",
+          "arti_nama": "Nama surat sesuai ayat pertama",
+          "jumlah_ayat": "Terdiri atas 83 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-37 dalam Al Qur'an",
+          "nama": "As-Saffat",
+          "arabic": "الصافات",
+          "arti_nama": "Barisan-barisan",
+          "jumlah_ayat": "Terdiri atas 182 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-38 dalam Al Qur'an",
+          "nama": "Sad",
+          "arabic": "ص",
+          "arti_nama": "Nama surat sesuai ayat pertama",
+          "jumlah_ayat": "Terdiri atas 88 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-39 dalam Al Qur'an",
+          "nama": "Az-Zumar",
+          "arabic": "الزمر",
+          "arti_nama": "Rombongan-rombongan",
+          "jumlah_ayat": "Terdiri atas 75 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-40 dalam Al Qur'an",
+          "nama": "Ghafir",
+          "arabic": "غافر",
+          "arti_nama": "Yang mengampuni",
+          "jumlah_ayat": "Terdiri atas 85 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-41 dalam Al Qur'an",
+          "nama": "Fussilat",
+          "arabic": "فصلت",
+          "arti_nama": "Yang dijelaskan",
+          "jumlah_ayat": "Terdiri atas 54 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-42 dalam Al Qur'an",
+          "nama": "Asy-Syura",
+          "arabic": "الشورى",
+          "arti_nama": "Musyawarah",
+          "jumlah_ayat": "Terdiri atas 53 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-43 dalam Al Qur'an",
+          "nama": "Az-Zukhruf",
+          "arabic": "الزخرف",
+          "arti_nama": "Perhiasan",
+          "jumlah_ayat": "Terdiri atas 89 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-44 dalam Al Qur'an",
+          "nama": "Ad-Dukhan",
+          "arabic": "الدخان",
+          "arti_nama": "Kabut",
+          "jumlah_ayat": "Terdiri atas 59 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-45 dalam Al Qur'an",
+          "nama": "Al-Jasiyah",
+          "arabic": "الجاثية",
+          "arti_nama": "Yang bertekuk lutut",
+          "jumlah_ayat": "Terdiri atas 37 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-46 dalam Al Qur'an",
+          "nama": "Al-Ahqaf",
+          "arabic": "الَأحقاف",
+          "arti_nama": "Bukit-bukit pasir",
+          "jumlah_ayat": "Terdiri atas 35 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-47 dalam Al Qur'an",
+          "nama": "Muhammad",
+          "arabic": "محمد",
+          "arti_nama": "Nama dari nabi terakhir",
+          "jumlah_ayat": "Terdiri atas 38 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-48 dalam Al Qur'an",
+          "nama": "Al-Fath",
+          "arabic": "الفتح",
+          "arti_nama": "Kemenangan",
+          "jumlah_ayat": "Terdiri atas 29 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-49 dalam Al Qur'an",
+          "nama": "Al-Hujurat",
+          "arabic": "الحجرات",
+          "arti_nama": "Kamar-kamar",
+          "jumlah_ayat": "Terdiri atas 18 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-50 dalam Al Qur'an",
+          "nama": "Qaf",
+          "arabic": "ق",
+          "arti_nama": "Qaaf",
+          "jumlah_ayat": "Terdiri atas 45 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-51 dalam Al Qur'an",
+          "nama": "Az-Zariyat",
+          "arabic": "الذاريات",
+          "arti_nama": "Angin yang menerbangkan",
+          "jumlah_ayat": "Terdiri atas 60 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-52 dalam Al Qur'an",
+          "nama": "At-Tur",
+          "arabic": "الطور",
+          "arti_nama": "Bukit",
+          "jumlah_ayat": "Terdiri atas 49 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-53 dalam Al Qur'an",
+          "nama": "An-Najm",
+          "arabic": "النجم",
+          "arti_nama": "Bintang",
+          "jumlah_ayat": "Terdiri atas 62 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-54 dalam Al Qur'an",
+          "nama": "Al-Qamar",
+          "arabic": "القمر",
+          "arti_nama": "Bulan",
+          "jumlah_ayat": "Terdiri atas 55 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-55 dalam Al Qur'an",
+          "nama": "Ar-Rahman",
+          "arabic": "الرحمن",
+          "arti_nama": "Yang Maha Pemurah",
+          "jumlah_ayat": "Terdiri atas 78 ayat",
+          "tempat_turun": "Diturunkan di Madinah & Mekkah"
+      },
+      {
+          "nomor": "Surat ke-56 dalam Al Qur'an",
+          "nama": "Al-Waqi’ah",
+          "arabic": "الواقعة",
+          "arti_nama": "Hari Kiamat",
+          "jumlah_ayat": "Terdiri atas 96 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-57 dalam Al Qur'an",
+          "nama": "Al-Hadid",
+          "arabic": "الحديد",
+          "arti_nama": "Besi",
+          "jumlah_ayat": "Terdiri atas 29 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-58 dalam Al Qur'an",
+          "nama": "Al-Mujadilah",
+          "arabic": "المجادلة",
+          "arti_nama": "Wanita yang mengajukan gugatan",
+          "jumlah_ayat": "Terdiri atas 22 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-59 dalam Al Qur'an",
+          "nama": "Al-Hasyr",
+          "arabic": "الحشر",
+          "arti_nama": "Pengusiran",
+          "jumlah_ayat": "Terdiri atas 24 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-60 dalam Al Qur'an",
+          "nama": "Al-Mumtahanah",
+          "arabic": "الممتحنة",
+          "arti_nama": "Wanita yang diuji",
+          "jumlah_ayat": "Terdiri atas 13 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-61 dalam Al Qur'an",
+          "nama": "As-Saff",
+          "arabic": "الصف",
+          "arti_nama": "Satu barisan",
+          "jumlah_ayat": "Terdiri atas 14 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-62 dalam Al Qur'an",
+          "nama": "Al-Jumu’ah",
+          "arabic": "الجمعة",
+          "arti_nama": "Hari Jum’at",
+          "jumlah_ayat": "Terdiri atas 11 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-63 dalam Al Qur'an",
+          "nama": "Al-Munafiqun",
+          "arabic": "المنافقون",
+          "arti_nama": "Orang-orang yang munafik",
+          "jumlah_ayat": "Terdiri atas 11 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-64 dalam Al Qur'an",
+          "nama": "At-Tagabun",
+          "arabic": "التغابن",
+          "arti_nama": "Hari dinampakkan kesalahan-kesalahan",
+          "jumlah_ayat": "Terdiri atas 18 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-65 dalam Al Qur'an",
+          "nama": "At-Talaq",
+          "arabic": "الطلاق",
+          "arti_nama": "Talak",
+          "jumlah_ayat": "Terdiri atas 12 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-66 dalam Al Qur'an",
+          "nama": "At-Tahrim",
+          "arabic": "التحريم",
+          "arti_nama": "Mengharamkan",
+          "jumlah_ayat": "Terdiri atas 12 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-67 dalam Al Qur'an",
+          "nama": "Al-Mulk",
+          "arabic": "الملك",
+          "arti_nama": "Kerajaan",
+          "jumlah_ayat": "Terdiri atas 30 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-68 dalam Al Qur'an",
+          "nama": "Al-Qalam",
+          "arabic": "القلم",
+          "arti_nama": "Pena",
+          "jumlah_ayat": "Terdiri atas 52 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-69 dalam Al Qur'an",
+          "nama": "Al-Haqqah",
+          "arabic": "الحآقة",
+          "arti_nama": "Hari kiamat",
+          "jumlah_ayat": "Terdiri atas 52 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-70 dalam Al Qur'an",
+          "nama": "Al-Ma’arij",
+          "arabic": "المعارج",
+          "arti_nama": "Tempat naik",
+          "jumlah_ayat": "Terdiri atas 44 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-71 dalam Al Qur'an",
+          "nama": "Nuh",
+          "arabic": "نوح",
+          "arti_nama": "Nabi Nuh",
+          "jumlah_ayat": "Terdiri atas 28 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-72 dalam Al Qur'an",
+          "nama": "Al-Jinn",
+          "arabic": "الجن",
+          "arti_nama": "Bermakna salah satu jenis mahluk gaib",
+          "jumlah_ayat": "Terdiri atas 28 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-73 dalam Al Qur'an",
+          "nama": "Al-Muzzammil",
+          "arabic": "المزمل",
+          "arti_nama": "Orang yang berselimut",
+          "jumlah_ayat": "Terdiri atas 20 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-74 dalam Al Qur'an",
+          "nama": "Al-Muddassir",
+          "arabic": "المدثر",
+          "arti_nama": "Orang yang berkemul",
+          "jumlah_ayat": "Terdiri atas 56 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-75 dalam Al Qur'an",
+          "nama": "Al-Qiyamah",
+          "arabic": "القيامة",
+          "arti_nama": "Kiamat",
+          "jumlah_ayat": "Terdiri atas 40 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-76 dalam Al Qur'an",
+          "nama": "Al-Insan",
+          "arabic": "الإنسان",
+          "arti_nama": "Manusia",
+          "jumlah_ayat": "Terdiri atas 31 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-77 dalam Al Qur'an",
+          "nama": "Al-Mursalat",
+          "arabic": "المرسلات",
+          "arti_nama": "Malaikat-Malaikat Yang Diutus",
+          "jumlah_ayat": "Terdiri atas 50 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-78 dalam Al Qur'an",
+          "nama": "An-Naba’",
+          "arabic": "النبأ",
+          "arti_nama": "Berita besar",
+          "jumlah_ayat": "Terdiri atas 40 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-79 dalam Al Qur'an",
+          "nama": "An-Nazi’at",
+          "arabic": "النازعات",
+          "arti_nama": "Malaikat-Malaikat Yang Mencabut",
+          "jumlah_ayat": "Terdiri atas 46 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-80 dalam Al Qur'an",
+          "nama": "Abasa",
+          "arabic": "عبس",
+          "arti_nama": "Ia Bermuka masam",
+          "jumlah_ayat": "Terdiri atas 42 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-81 dalam Al Qur'an",
+          "nama": "At-Takwir",
+          "arabic": "التكوير",
+          "arti_nama": "Menggulung",
+          "jumlah_ayat": "Terdiri atas 29 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-82 dalam Al Qur'an",
+          "nama": "Al-Infitar",
+          "arabic": "الإنفطار",
+          "arti_nama": "Terbelah",
+          "jumlah_ayat": "Terdiri atas 19 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-83 dalam Al Qur'an",
+          "nama": "Al-Tatfif",
+          "arabic": "المطففين",
+          "arti_nama": "Orang-orang yang curang",
+          "jumlah_ayat": "Terdiri atas 36 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-84 dalam Al Qur'an",
+          "nama": "Al-Insyiqaq",
+          "arabic": "الإنشقاق",
+          "arti_nama": "Terbelah",
+          "jumlah_ayat": "Terdiri atas 25 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-85 dalam Al Qur'an",
+          "nama": "Al-Buruj",
+          "arabic": "البروج",
+          "arti_nama": "Gugusan bintang",
+          "jumlah_ayat": "Terdiri atas 22 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-86 dalam Al Qur'an",
+          "nama": "At-Tariq",
+          "arabic": "الطارق",
+          "arti_nama": "Yang datang di malam hari",
+          "jumlah_ayat": "Terdiri atas 17 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-87 dalam Al Qur'an",
+          "nama": "Al-A’la",
+          "arabic": "الأعلى",
+          "arti_nama": "Yang paling tinggi",
+          "jumlah_ayat": "Terdiri atas 19 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-88 dalam Al Qur'an",
+          "nama": "Al-Gasyiyah",
+          "arabic": "الغاشية",
+          "arti_nama": "Hari Pembalasan",
+          "jumlah_ayat": "Terdiri atas 26 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-89 dalam Al Qur'an",
+          "nama": "Al-Fajr",
+          "arabic": "الفجر",
+          "arti_nama": "Fajar",
+          "jumlah_ayat": "Terdiri atas 30 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-90 dalam Al Qur'an",
+          "nama": "Al-Balad",
+          "arabic": "البلد",
+          "arti_nama": "Negeri",
+          "jumlah_ayat": "Terdiri atas 20 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-91 dalam Al Qur'an",
+          "nama": "Asy-Syams",
+          "arabic": "الشمس",
+          "arti_nama": "Matahari",
+          "jumlah_ayat": "Terdiri atas 15 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-92 dalam Al Qur'an",
+          "nama": "Al-Lail",
+          "arabic": "اليل",
+          "arti_nama": "Malam",
+          "jumlah_ayat": "Terdiri atas 21 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-93 dalam Al Qur'an",
+          "nama": "Ad-Duha",
+          "arabic": "الضحى‎‎",
+          "arti_nama": "Waktu matahari sepenggalahan naik (Dhuha)",
+          "jumlah_ayat": "Terdiri atas 11 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-94 dalam Al Qur'an",
+          "nama": "Al-Insyirah",
+          "arabic": "الإنشراح‎‎",
+          "arti_nama": "Melapangkan",
+          "jumlah_ayat": "Terdiri atas 8 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-95 dalam Al Qur'an",
+          "nama": "At-Tin",
+          "arabic": "التينِ",
+          "arti_nama": "Buah Tin",
+          "jumlah_ayat": "Terdiri atas 8 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-96 dalam Al Qur'an",
+          "nama": "Al-'Alaq",
+          "arabic": "العلق",
+          "arti_nama": "Segumpal Darah",
+          "jumlah_ayat": "Terdiri atas 19 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-97 dalam Al Qur'an",
+          "nama": "Al-Qadr",
+          "arabic": "القدرِ",
+          "arti_nama": "Kemuliaan",
+          "jumlah_ayat": "Terdiri atas 5 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-98 dalam Al Qur'an",
+          "nama": "Al-Bayyinah",
+          "arabic": "البينة",
+          "arti_nama": "Pembuktian",
+          "jumlah_ayat": "Terdiri atas 8 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-99 dalam Al Qur'an",
+          "nama": "Az-Zalzalah",
+          "arabic": "الزلزلة‎‎",
+          "arti_nama": "Kegoncangan",
+          "jumlah_ayat": "Terdiri atas 8 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-100 dalam Al Qur'an",
+          "nama": "Al-'Adiyat",
+          "arabic": "العاديات‎‎",
+          "arti_nama": "Berlari kencang",
+          "jumlah_ayat": "Terdiri atas 11 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-101 dalam Al Qur'an",
+          "nama": "Al-Qari'ah",
+          "arabic": "القارعة‎‎",
+          "arti_nama": "Hari Kiamat",
+          "jumlah_ayat": "Terdiri atas 11 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-102 dalam Al Qur'an",
+          "nama": "At-Takasur",
+          "arabic": "التكاثر‎‎",
+          "arti_nama": "Bermegah-megahan",
+          "jumlah_ayat": "Terdiri atas 8 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-103 dalam Al Qur'an",
+          "nama": "Al-'Asr",
+          "arabic": "العصر",
+          "arti_nama": "Masa/Waktu",
+          "jumlah_ayat": "Terdiri atas 3 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-104 dalam Al Qur'an",
+          "nama": "Al-Humazah",
+          "arabic": "الهمزة‎‎",
+          "arti_nama": "Pengumpat",
+          "jumlah_ayat": "Terdiri atas 9 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-105 dalam Al Qur'an",
+          "nama": "Al-Fil",
+          "arabic": "الفيل",
+          "arti_nama": "Gajah",
+          "jumlah_ayat": "Terdiri atas 5 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-106 dalam Al Qur'an",
+          "nama": "Quraisy",
+          "arabic": "قريش",
+          "arti_nama": "Suku Quraisy",
+          "jumlah_ayat": "Terdiri atas 4 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-107 dalam Al Qur'an",
+          "nama": "Al-Ma’un",
+          "arabic": "الماعون",
+          "arti_nama": "Barang-barang yang berguna",
+          "jumlah_ayat": "Terdiri atas 7 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-108 dalam Al Qur'an",
+          "nama": "Al-Kautsar",
+          "arabic": "الكوثر",
+          "arti_nama": "Nikmat yang berlimpah",
+          "jumlah_ayat": "Terdiri atas 3 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-109 dalam Al Qur'an",
+          "nama": "Al-Kafirun",
+          "arabic": "الكافرون",
+          "arti_nama": "Orang-orang kafir",
+          "jumlah_ayat": "Terdiri atas 6 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-110 dalam Al Qur'an",
+          "nama": "An-Nasr",
+          "arabic": "النصر‎‎",
+          "arti_nama": "Pertolongan",
+          "jumlah_ayat": "Terdiri atas 3 ayat",
+          "tempat_turun": "Diturunkan di Madinah"
+      },
+      {
+          "nomor": "Surat ke-111 dalam Al Qur'an",
+          "nama": "Al-Lahab",
+          "arabic": "اللهب‎‎",
+          "arti_nama": "Gejolak Api/ Sabut",
+          "jumlah_ayat": "Terdiri atas 5 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-112 dalam Al Qur'an",
+          "nama": "Al-Ikhlas",
+          "arabic": "الإخلاص‎‎",
+          "arti_nama": "Ikhlas",
+          "jumlah_ayat": "Terdiri atas 4 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-113 dalam Al Qur'an",
+          "nama": "Al-Falaq",
+          "arabic": "الفلق",
+          "arti_nama": "Waktu Subuh",
+          "jumlah_ayat": "Terdiri atas 5 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      },
+      {
+          "nomor": "Surat ke-114 dalam Al Qur'an",
+          "nama": "An-Nas",
+          "arabic": "الناس",
+          "arti_nama": "Umat Manusia",
+          "jumlah_ayat": "Terdiri atas 6 ayat",
+          "tempat_turun": "Diturunkan di Mekkah"
+      }
+  ]
+}
