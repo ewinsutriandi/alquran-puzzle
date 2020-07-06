@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:juz_amma_puzzle/ui/list_sura/list_sura_page.dart';
+import 'package:juz_amma_puzzle/ui/theme.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class MainProgress extends StatelessWidget {
@@ -104,8 +105,11 @@ class MainProgress extends StatelessWidget {
         height: 25,        
         child: RaisedButton(
           onPressed: () {
-            print('open list sura all');
-            Navigator.of(_context).push(MaterialPageRoute(builder: (context) => ListSuraPage()));
+            print('open list sura all');            
+            Navigator.push(
+              _context,
+              AppRouteTransition(toPage: ListSuraPage())
+            );
           },
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(4.0),

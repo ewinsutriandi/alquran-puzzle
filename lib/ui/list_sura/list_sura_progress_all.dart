@@ -7,8 +7,8 @@ import 'package:juz_amma_puzzle/services/stats_api.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class ListSuraProgressAll extends StatefulWidget {
-  final Color _darkColor = Colors.white;
-  final Color _lightColor = Colors.orange[200];
+  final Color _darkColor = Colors.blue[300];
+  final Color _lightColor = Colors.blue[50];
   final List<Sura> suraList;
   ListSuraProgressAll({this.suraList});
   
@@ -45,8 +45,8 @@ class ListSuraProgressAllState extends State<ListSuraProgressAll> {
             radius: 65,
             center: Text('$pct%',style: widget.captionStyle,),
             //fillColor: Colors.white,
-            backgroundColor: widget._lightColor,     
-            progressColor: widget._darkColor,
+            backgroundColor: Colors.white54,     
+            progressColor: Colors.white,
             lineWidth: 11,
             circularStrokeCap: CircularStrokeCap.round,
             percent: stats.progressSura,
@@ -74,8 +74,8 @@ class ListSuraProgressAllState extends State<ListSuraProgressAll> {
             radius: 65,
             center: Text('$pct%',style: widget.captionStyle,),
             //fillColor: Colors.white,
-            backgroundColor: widget._lightColor,     
-            progressColor: widget._darkColor,
+            backgroundColor: Colors.white54,     
+            progressColor: Colors.white,
             lineWidth: 11,
             circularStrokeCap: CircularStrokeCap.round,
             percent: stats.progressAya,

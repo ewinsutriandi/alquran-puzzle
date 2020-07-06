@@ -57,6 +57,25 @@ class AppTheme {
         print(index);
       },
     );
-  }
+  }  
 
 } 
+
+class AppRouteTransition extends PageRouteBuilder {
+  final Widget toPage;
+  AppRouteTransition({this.toPage}) 
+    : super(
+      pageBuilder: (context, animation, secondaryAnimation) => toPage,
+        transitionDuration: Duration(milliseconds: 500),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return  SlideTransition(
+            position: Tween<Offset>(
+              begin: const Offset(-1, 0),
+              end: Offset.zero,
+            ).animate(animation),
+            child: child,
+          );
+        },
+    );
+}
+

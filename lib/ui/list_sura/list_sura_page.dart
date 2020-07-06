@@ -32,11 +32,11 @@ class ListSuraPage extends StatefulWidget {
 
   final TextStyle _transliterationStyle = TextStyle(
     fontSize: 14,
-    color: Colors.grey[600]        
+    color: Colors.black        
   );
 
   final TextStyle _statstyle = TextStyle(
-    fontSize: 14,    
+    fontSize: 12,    
     fontStyle: FontStyle.italic,
     color: Colors.grey[700]        
   );
@@ -111,7 +111,7 @@ class ListSuraPageState extends State<ListSuraPage> {
   Widget _pageScaffold(Widget pg) {
     return Scaffold(
       //appBar: AppTheme.appBar(),
-      drawerScrimColor: widget._darkColor,      
+      //drawerScrimColor: widget._darkColor,      
       body: pg,
       //bottomNavigationBar: bottomBar(),      
     );
@@ -135,7 +135,7 @@ class ListSuraPageState extends State<ListSuraPage> {
           
           SliverToBoxAdapter(
             child: Container(
-              color: Colors.orange[700],
+              color: widget._darkColor,
               padding: const EdgeInsets.all(8.0),
               child: ListSuraProgressAll(suraList: data),              
             ),            
@@ -146,7 +146,7 @@ class ListSuraPageState extends State<ListSuraPage> {
               minHeight: 60, 
               maxHeight: 60, 
               child: Container(
-                color: Colors.orange,
+                color: widget._darkColor,
                 padding: const EdgeInsets.all(8.0),
                 child: _search(),              
               ),
@@ -199,52 +199,57 @@ class ListSuraPageState extends State<ListSuraPage> {
               percent: st.progress,
             );  
           }
-
-          return Container(
-            //padding: EdgeInsets.fromLTRB(16, 8, 16, 8),      
-            padding: EdgeInsets.only(bottom: 4,top: 4),
+          return GestureDetector(
+            onTap: () => _openSura(s),
             child: Container(
-              decoration: BoxDecoration(
-                color: pctColor,                
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(15),
-                  bottomRight: Radius.circular(15),          
-                )
-              ),
-              child: Row(
-                children: <Widget>[
-                  SizedBox(
-                    width:4,
-                    child: null             
-                    ),
-                  Expanded(
-                    child: Container(
-                      child: Row(
-                        children: <Widget>[
-                          Expanded(child:_suraDetails(s,st)),
-                          progressIcon
-                        ],
-                      ),
-                      padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-                      decoration: BoxDecoration(
-                        color: Colors.white,                
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(15),
-                          bottomRight: Radius.circular(15),                              
-                        ),
-                        border: new Border.all(
-                          color: Colors.grey,
-                          width: 0.7,
-                          style: BorderStyle.solid
-                        ),                  
-                      ),
-                    ),
+            //padding: EdgeInsets.fromLTRB(16, 8, 16, 8),      
+              padding: EdgeInsets.only(bottom: 4,top: 4),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: widget._darkColor,                
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(15),
+                    bottomRight: Radius.circular(15),          
                   ),
-                        
-                ],
-              ),
-            )
+                  border: new Border.all(
+                    color: widget._darkColor,
+                    width: 0.7,
+                    style: BorderStyle.solid
+                  )
+                ),
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(
+                      width:4,
+                      child: null             
+                      ),
+                    Expanded(
+                      child: Container(
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(child:_suraDetails(s,st)),
+                            progressIcon
+                          ],
+                        ),
+                        padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+                        decoration: BoxDecoration(
+                          //color: widget._lightColor,                
+                          color: Colors.grey[50],                
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(15),
+                            bottomRight: Radius.circular(15),                              
+                          ),
+                                            
+                        ),
+                      ),
+                    ),
+                          
+                  ],
+                ),
+              )
+            ),
           );
+          
         }
         else {
           return CircularProgressIndicator();
@@ -335,13 +340,13 @@ class ListSuraPageState extends State<ListSuraPage> {
 
   void _openSura(Sura s) {
     List<String> ayas = s.contents;
-    print(ayas);
+    print('open sura ${s.name}');
     JumbledTextPuzzle _engine = JumbledTextPuzzle(ayas);
     JumbledTextPage puzzle = JumbledTextPage(_engine);
     Widget page = Scaffold(
       appBar: AppBar(
-        title: Text('Juz Amma Puzzle'),
-        centerTitle: true,
+        title: Text('${s.tIndonesia}',style: AppTheme.appBarTitleStyle(),),
+        centerTitle: true,        
       ),
       body: puzzle,
       bottomNavigationBar: BottomNavigationBar(
@@ -361,22 +366,8 @@ class ListSuraPageState extends State<ListSuraPage> {
         ],
       ),
     );
-    Navigator.push(
-      _context,
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => page,
-        transitionDuration: Duration(milliseconds: 200),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          return ScaleTransition(
-            scale: animation,
-            child: child,
-            alignment: Alignment.topCenter,
-            );
-        },
-        )
-      );
+  Navigator.push(context, AppRouteTransition(toPage: page));  
   }
-
 }
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
