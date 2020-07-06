@@ -104,7 +104,7 @@ class MainProgress extends StatelessWidget {
         height: 25,        
         child: RaisedButton(
           onPressed: () {
-            print('open list');
+            print('open list sura all');
             Navigator.of(_context).push(MaterialPageRoute(builder: (context) => ListSuraPage()));
           },
           shape: RoundedRectangleBorder(

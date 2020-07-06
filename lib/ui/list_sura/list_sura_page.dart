@@ -47,11 +47,45 @@ class ListSuraPage extends StatefulWidget {
 class ListSuraPageState extends State<ListSuraPage> {
   Future<List<Sura>> _suraList;
   static BuildContext _context;
+  String _searchPhrase;
+  TextEditingController _searchController = TextEditingController();
+  int _suraFound;
 
   @override
   void initState() {
     super.initState();
     _suraList = GetIt.I<QuranData>().suraList;
+    _searchController.addListener(() {
+      debugPrint(_searchController.text);
+      _searchPhrase = _searchController.text.toLowerCase();
+      setState((){});
+    });    
+  }
+
+  Future<List<Sura>> get _filteredList async {    
+    List<Sura> filtered = [];
+    await _suraList.then((value) {      
+      if (_searchPhrase == null || _searchPhrase.isEmpty) {
+        filtered = value;
+      } else {
+        _suraFound = 0;
+        for(int i=0;i<value.length;i++) {
+        Sura s = value[i];
+        if (s.name.toLowerCase().contains(_searchPhrase)
+          ||s.tEnglish.toLowerCase().contains(_searchPhrase)
+          ||s.tIndonesia.toLowerCase().contains(_searchPhrase)
+          ||s.trIndonesia.toLowerCase().contains(_searchPhrase)
+          ||s.trEnglish.toLowerCase().contains(_searchPhrase)
+          ||s.typeIndonesia.toLowerCase().contains(_searchPhrase)
+          ||s.type.toLowerCase().contains(_searchPhrase) 
+          ) {
+            filtered.add(s);
+            _suraFound++;
+          }
+        }
+      }            
+    });
+    return filtered;
   }
   
   @override
@@ -59,7 +93,7 @@ class ListSuraPageState extends State<ListSuraPage> {
     _context = context;
     return _pageScaffold(
       FutureBuilder(
-        future: _suraList,
+        future: _filteredList,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return _sliver(snapshot.data);
@@ -263,20 +297,38 @@ class ListSuraPageState extends State<ListSuraPage> {
       );   
   }
 
-  Widget _search() {    
+  Widget _search() {
+    String hint = '';
+    if (_searchPhrase != null && _searchPhrase.isNotEmpty) {
+      hint = '$_suraFound surat ditemukan ';
+    }     
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 4),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(10)),
       ),           
-      child: TextField(      
-        //controller: _filter,
-        decoration: new InputDecoration(
-          prefixIcon: new Icon(Icons.search),
-          hintText: 'Cari...'
-        ),
-      ),
+      child: Stack(
+        children: <Widget>[
+          TextField(      
+            controller: _searchController,
+            decoration: new InputDecoration(
+              prefixIcon: new Icon(Icons.search),
+              hintText: 'Cari...'
+            ),          
+          ),
+          Center(child:Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              Text(hint,style: TextStyle(
+                color: Colors.grey[300],
+                fontStyle: FontStyle.italic
+              ),)
+            ],
+            
+          ))
+        ],
+      )
     );
     
   }

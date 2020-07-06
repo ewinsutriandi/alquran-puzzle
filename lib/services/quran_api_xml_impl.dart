@@ -5,8 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:juz_amma_puzzle/model/quran.dart';
 import 'package:juz_amma_puzzle/services/quran_api.dart';
 import 'package:xml/xml.dart';
-
-
 class QuranApiXmlImplementation implements QuranAPI   {
   
   Future<String> _loadAsset(String path) async {
@@ -37,7 +35,8 @@ class QuranApiXmlImplementation implements QuranAPI   {
       s.start = int.parse(el.getAttribute('start'));
       s.name = el.getAttribute('name');
       s.tEnglish = el.getAttribute('tname');
-      s.trEnglish = el.getAttribute('ename');          
+      s.trEnglish = el.getAttribute('ename');
+      s.type = el.getAttribute('type');          
       suraList.add(s);
     });
     print('done loading main meta');
