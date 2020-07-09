@@ -8,6 +8,7 @@ import 'package:juz_amma_puzzle/model/quran.dart';
 import 'package:juz_amma_puzzle/services/stats_api.dart';
 import 'package:juz_amma_puzzle/ui/jumbled_text_page.dart';
 import 'package:juz_amma_puzzle/ui/list_sura/list_sura_progress_all.dart';
+import 'package:juz_amma_puzzle/ui/puzzle/puzzle.dart';
 import 'package:juz_amma_puzzle/ui/theme.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'dart:math' as math;
@@ -338,35 +339,10 @@ class ListSuraPageState extends State<ListSuraPage> {
     
   }
 
-  void _openSura(Sura s) {
-    List<String> ayas = s.contents;
-    print('open sura ${s.name}');
-    JumbledTextPuzzle _engine = JumbledTextPuzzle(ayas);
-    JumbledTextPage puzzle = JumbledTextPage(_engine);
-    Widget page = Scaffold(
-      appBar: AppBar(
-        title: Text('${s.tIndonesia}',style: AppTheme.appBarTitleStyle(),),
-        centerTitle: true,        
-      ),
-      body: puzzle,
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            title: Text('Awal Surat'),
-            icon: Icon(Icons.home)
-          ),
-          BottomNavigationBarItem(
-            title: Text('Belum Terselesaikan'),
-            icon: Icon(Icons.event_available)
-          ),
-          BottomNavigationBarItem(
-            title: Text('Acak'),
-            icon: Icon(Icons.all_inclusive)
-          ),
-        ],
-      ),
-    );
-  Navigator.push(context, AppRouteTransition(toPage: page));  
+  void _openSura(Sura s) {    
+    print('open sura ${s.name}');    
+    SuraPuzzlePage puzzle = SuraPuzzlePage(sura: s);    
+    Navigator.push(context, AppRouteTransition(toPage: puzzle));  
   }
 }
 

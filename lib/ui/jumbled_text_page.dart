@@ -133,10 +133,8 @@ class _JumbledTextPageState extends State<JumbledTextPage> {
       print('correct');      
       setState(() {
         _showOriginalText = true;
-      });
-      //TODO  play winning sound
-      //TODO enable button for new Game (next,prev)
-      //_showNewGame = true;
+      });      
     }
   }
 }
+

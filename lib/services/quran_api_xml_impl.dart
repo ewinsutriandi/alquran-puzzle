@@ -67,7 +67,11 @@ class QuranApiXmlImplementation implements QuranAPI   {
       Sura s = suraList[i];
       s.contents = [];
       for (int a = s.start; a < s.start + s.totalAyas; a++ ) {
-        s.contents.add(suraContent[a]);
+        String aya = suraContent[a];
+        if (i>0 && a == s.start) { // remove bismillah except for al fatiha
+          aya = aya.substring(38,aya.length);
+        }
+        s.contents.add(aya);
       }
     }
     print('done loading content');
