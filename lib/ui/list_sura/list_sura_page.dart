@@ -342,7 +342,9 @@ class ListSuraPageState extends State<ListSuraPage> {
   void _openSura(Sura s) {    
     print('open sura ${s.name}');    
     SuraPuzzlePage puzzle = SuraPuzzlePage(sura: s);    
-    Navigator.push(context, AppRouteTransition(toPage: puzzle));  
+    Navigator.push(context, AppRouteTransition(toPage: puzzle)).then((value) {setState(() {
+      
+    });});  
   }
 }
 

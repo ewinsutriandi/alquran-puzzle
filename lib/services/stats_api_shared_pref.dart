@@ -24,15 +24,13 @@ class StatsApiSharedPrefImpl extends StatsAPI{
   }
 
   @override
-  Future<StatsGroup> getStatsGroup(List<Sura> listSura) async {
-    print('Get mock stats group for sura size of: '+listSura.length.toString());      
+  Future<StatsGroup> getStatsGroup(List<Sura> listSura) async {    
     List<StatsSura> data = [];
     for (Sura s in listSura) {      
       StatsSura d = await getSuraStats(s);      
       data.add(d);
     }        
-    StatsGroup sg =  StatsGroup.fromSuraStatsList(data);
-    print(sg.toString());
+    StatsGroup sg =  StatsGroup.fromSuraStatsList(data);    
     return sg;                    
   }
   

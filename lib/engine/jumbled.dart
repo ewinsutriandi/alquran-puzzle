@@ -20,7 +20,9 @@ class JumbledTextPuzzle {
     _textIdx++;
 		_originalText = _texts[_textIdx];
 		_chopText();
-		_choppedTexts.shuffle();
+    while (_correctOrder()) {
+      _choppedTexts.shuffle();
+    }		
 	}
 
 	void setChoppingRules(int minSegment,int maxSegment,int chrMax) {
@@ -32,14 +34,18 @@ class JumbledTextPuzzle {
   int get currentIdx => _textIdx;
   List<String> get choppedTexts => _choppedTexts;
 
-	void check() {
-		String joined = _choppedTexts.join(''); 
+  bool _correctOrder() {
+    String joined = _choppedTexts.join(''); 
     if (_spaceBetweenChops) {
       joined = _choppedTexts.join(' ');		
-    }     
-    this._onCheck.add(joined == _originalText);    
+    }
     debugPrint(joined);
     debugPrint(this._originalText);
+    return (joined == _originalText);
+  }
+	
+  void check() {		    
+    this._onCheck.add(_correctOrder());        
 	}
 
   void reorder(int oldIndex,int newIndex) {
