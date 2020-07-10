@@ -363,7 +363,8 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
   
   void _postCheck(bool correct) {
     if (correct) {
-      print('correct');      
+      print('correct');
+      GetIt.I<StatsAPI>().recordCompletion(_sura, _puzzle.currentIdx);      
       setState(() {
         _screenStatus = ScreenStatus.showoritext;
       });      

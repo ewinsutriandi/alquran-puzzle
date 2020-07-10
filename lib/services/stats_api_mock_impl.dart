@@ -5,6 +5,7 @@ import 'package:juz_amma_puzzle/model/quran.dart';
 import 'package:juz_amma_puzzle/services/stats_api.dart';
 
 class StatsAPIMockImpl implements StatsAPI {
+  
   Future<StatsSura> getSuraStats(Sura s){
     int totalAya = s.totalAyas;
     int rnd = new Random().nextInt(5);
@@ -32,5 +33,9 @@ class StatsAPIMockImpl implements StatsAPI {
     StatsGroup sg =  StatsGroup.fromSuraStatsList(data);
     print(sg.toString());
     return sg;                    
+  }
+  
+  void recordCompletion(Sura s, int ayaNumber) {
+    // TODO: implement recordCompletion
   }
 }

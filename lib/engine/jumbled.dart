@@ -29,6 +29,7 @@ class JumbledTextPuzzle {
 		this._chrMaxPerSegment = chrMax;
 	}
 
+  int get currentIdx => _textIdx;
   List<String> get choppedTexts => _choppedTexts;
 
 	void check() {
