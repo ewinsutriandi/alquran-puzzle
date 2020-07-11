@@ -5,12 +5,22 @@ import 'package:juz_amma_puzzle/services/quran_api.dart';
 class QuranData {
   Future<List<Sura>> _suraList;
   final sl = GetIt.instance;
-
+  final juz30Start = 78; // an naba
   QuranData() {
     _loadData();
   }
 
   Future<List<Sura>> get suraList => _suraList;
+  
+  Future<List<Sura>> get suraListJuzAmma async {
+    List<Sura> suraList = await _suraList;
+    List<Sura> juzAmma = [];
+    for (int i=juz30Start;i<=114;i++) {
+      Sura s = suraList[i-1];
+      juzAmma.add(s);
+    }
+    return juzAmma;
+  }
 
   void _loadData() async {
     _suraList = sl.get<QuranAPI>().getSuraList();

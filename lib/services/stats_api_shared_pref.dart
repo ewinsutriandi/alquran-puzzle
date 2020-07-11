@@ -4,7 +4,7 @@ import 'package:juz_amma_puzzle/model/game_stats.dart';
 import 'package:juz_amma_puzzle/services/stats_api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class StatsApiSharedPrefImpl extends StatsAPI{
+class StatsApiSharedPrefImpl implements StatsAPI{
     
   static final String STATS_FILE = 'STATS';
   static final String DELIMITER = ';';

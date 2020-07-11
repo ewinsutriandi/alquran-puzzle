@@ -106,7 +106,7 @@ class MainProgressState extends State<MainProgress> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         //Text('$pct% ',style: tuntasStyle,),
-        Text('${stats.ayaSolved}/6236',style: widget.cntStyle,),
+        Text('${stats.ayaSolved}/${stats.totalAya}',style: widget.cntStyle,),
         Text('${stats.gamePlayed} sesi',style: widget.cntStyle,),
         _openList()
         

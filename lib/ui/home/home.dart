@@ -32,7 +32,7 @@ class HomeState extends State<Home> {
           _caption('PROGRESS'),          
           Row(
             children: <Widget>[
-              Expanded(child: ProgressJuzAmma(490, 2500)),
+              Expanded(child: ProgressJuzAmma()),
               SizedBox(width: 8,),
               Expanded(child: MainProgress()),
             ],

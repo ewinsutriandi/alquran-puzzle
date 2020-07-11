@@ -1,5 +1,3 @@
-import 'package:juz_amma_puzzle/services/service_locator.dart';
-
 class Sura {
   int idx;
   String name;
