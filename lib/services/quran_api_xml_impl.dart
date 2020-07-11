@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:juz_amma_puzzle/model/quran.dart';
 import 'package:juz_amma_puzzle/services/quran_api.dart';
 import 'package:xml/xml.dart';
-class QuranApiXmlImplementation implements QuranAPI   {
+class QuranApiXmlImplementation extends QuranAPI   {
   
   Future<String> _loadAsset(String path) async {
     print('load string from: '+path);      
@@ -77,5 +77,5 @@ class QuranApiXmlImplementation implements QuranAPI   {
     print('done loading content');
     return suraList;
   }
-  
+   
 }

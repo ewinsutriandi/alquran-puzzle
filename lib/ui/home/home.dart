@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:juz_amma_puzzle/components/hello.dart';
-import 'package:juz_amma_puzzle/components/last_session.dart';
-import 'package:juz_amma_puzzle/components/progress_all.dart';
-import 'package:juz_amma_puzzle/components/progress_juz.dart';
-import 'package:juz_amma_puzzle/components/recommend.dart';
+import 'package:juz_amma_puzzle/ui/home/hello.dart';
+import 'package:juz_amma_puzzle/ui/home/last_session.dart';
+import 'package:juz_amma_puzzle/ui/home/progress_all.dart';
+import 'package:juz_amma_puzzle/ui/home/progress_juz.dart';
+import 'package:juz_amma_puzzle/ui/home/recommend.dart';
 
 class Home extends StatefulWidget {
   static String _userName  = 'Pengguna Baru';
@@ -34,7 +34,7 @@ class HomeState extends State<Home> {
             children: <Widget>[
               Expanded(child: ProgressJuzAmma(490, 2500)),
               SizedBox(width: 8,),
-              Expanded(child: MainProgress(1972, 2500)),
+              Expanded(child: MainProgress()),
             ],
           ),          
           _caption('SESI TERAKHIR'),          

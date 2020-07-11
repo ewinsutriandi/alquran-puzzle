@@ -28,8 +28,7 @@ class ListSuraProgressAllState extends State<ListSuraProgressAll> {
   Future<StatsGroup> _statsF;  
   @override
   void initState() {
-    super.initState();    
-    _statsF = GetIt.I<StatsAPI>().getStatsGroup(widget.suraList);  
+    super.initState();          
   }
 
   Widget _progressCardSura(StatsGroup stats) {
@@ -93,6 +92,7 @@ class ListSuraProgressAllState extends State<ListSuraProgressAll> {
   
   @override
   Widget build(BuildContext context) {        
+    _statsF = GetIt.I<StatsAPI>().getStatsGroup(widget.suraList);
     return Container(      
       padding: EdgeInsets.symmetric(horizontal: 8),
       child: FutureBuilder(

@@ -35,7 +35,7 @@ class StatsAPIMockImpl implements StatsAPI {
     return sg;                    
   }
   
-  void recordCompletion(Sura s, int ayaNumber) {
+  Future<void> recordCompletion(Sura s, int ayaNumber) {
     // TODO: implement recordCompletion
   }
 }

@@ -17,6 +17,9 @@ class JumbledTextPuzzle {
   Stream<bool> get onCheck => _onCheck.stream;
 
 	void newGame() {
+    if (endOfIdx) { // start again from beginning of texts
+      _textIdx = -1;
+    }
     _textIdx++;
 		_originalText = _texts[_textIdx];
 		_chopText();
@@ -33,6 +36,7 @@ class JumbledTextPuzzle {
 
   int get currentIdx => _textIdx;
   List<String> get choppedTexts => _choppedTexts;
+  bool get endOfIdx => _textIdx == _texts.length-1;
 
   bool _correctOrder() {
     String joined = _choppedTexts.join(''); 

@@ -2,11 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:juz_amma_puzzle/data/quran_data.dart';
-import 'package:juz_amma_puzzle/engine/jumbled.dart';
 import 'package:juz_amma_puzzle/model/game_stats.dart';
 import 'package:juz_amma_puzzle/model/quran.dart';
 import 'package:juz_amma_puzzle/services/stats_api.dart';
-import 'package:juz_amma_puzzle/ui/jumbled_text_page.dart';
 import 'package:juz_amma_puzzle/ui/list_sura/list_sura_progress_all.dart';
 import 'package:juz_amma_puzzle/ui/puzzle/puzzle.dart';
 import 'package:juz_amma_puzzle/ui/theme.dart';
@@ -47,9 +45,8 @@ class ListSuraPage extends StatefulWidget {
 
 class ListSuraPageState extends State<ListSuraPage> {
   Future<List<Sura>> _suraList;
-  static BuildContext _context;
   String _searchPhrase;
-  TextEditingController _searchController = TextEditingController();
+  TextEditingController _searchController = TextEditingController();  
   int _suraFound;
 
   @override
@@ -58,14 +55,14 @@ class ListSuraPageState extends State<ListSuraPage> {
     _suraList = GetIt.I<QuranData>().suraList;
     _searchController.addListener(() {
       debugPrint(_searchController.text);
-      _searchPhrase = _searchController.text.toLowerCase();
+      _searchPhrase = _searchController.text.toLowerCase();      
       setState((){});
     });    
   }
 
   Future<List<Sura>> get _filteredList async {    
     List<Sura> filtered = [];
-    await _suraList.then((value) {      
+    await _suraList.then((value) {            
       if (_searchPhrase == null || _searchPhrase.isEmpty) {
         filtered = value;
       } else {
@@ -90,8 +87,7 @@ class ListSuraPageState extends State<ListSuraPage> {
   }
   
   @override
-  Widget build(BuildContext context) {    
-    _context = context;
+  Widget build(BuildContext context) {        
     return _pageScaffold(
       FutureBuilder(
         future: _filteredList,
@@ -118,7 +114,7 @@ class ListSuraPageState extends State<ListSuraPage> {
     );
   }
 
-  Widget _sliver(List<Sura> data) {
+  Widget _sliver(List<Sura> data) {    
     return CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
@@ -138,7 +134,16 @@ class ListSuraPageState extends State<ListSuraPage> {
             child: Container(
               color: widget._darkColor,
               padding: const EdgeInsets.all(8.0),
-              child: ListSuraProgressAll(suraList: data),              
+              child: FutureBuilder(
+                future: _suraList,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ListSuraProgressAll(suraList: snapshot.data);
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                },
+              ),              
             ),            
           ),
           SliverPersistentHeader(
@@ -156,16 +161,25 @@ class ListSuraPageState extends State<ListSuraPage> {
           SliverPadding(
             padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
             sliver: SliverList(
-              delegate: SliverChildListDelegate(
-                data.map((s) => _progressSura(s)).toList()
-              )              
-            ),
-            
+              delegate:  _suraProgressList(data)    
+            ),            
           ),
                    
         ],
       );
 
+  }
+
+  SliverChildListDelegate _suraProgressList(List<Sura> data) {
+    if (data.length>0) {
+      return SliverChildListDelegate(
+        data.map((s) => _progressSura(s)).toList()
+      );
+    } else {
+      return SliverChildListDelegate(
+        [Text('Data tidak ditemukan')]
+      );
+    }
   }
 
   Widget _progressSura(Sura s) {
@@ -343,7 +357,7 @@ class ListSuraPageState extends State<ListSuraPage> {
     print('open sura ${s.name}');    
     SuraPuzzlePage puzzle = SuraPuzzlePage(sura: s);    
     Navigator.push(context, AppRouteTransition(toPage: puzzle)).then((value) {setState(() {
-      
+      //_progressSummary;
     });});  
   }
 }

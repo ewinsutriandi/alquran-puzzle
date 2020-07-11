@@ -35,7 +35,7 @@ class StatsApiSharedPrefImpl extends StatsAPI{
   }
   
   @override
-  void recordCompletion(Sura s, int ayaNumber) async {
+  Future<void> recordCompletion(Sura s, int ayaNumber) async {
     debugPrint('Record completion stats to shared pref');
     List<int> freq = await _readStats();
     int cnt = freq[s.start+ayaNumber];

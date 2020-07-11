@@ -29,7 +29,7 @@ class StatsGroup {
     int ayaSolved = 0;
     int totalAya = 0;    
     statsL.forEach((stats) {
-      print(stats.toString());
+      //print(stats.toString());
       gamePlayed += stats.gamePlayed;      
       totalSura ++;
       stats.completed?suraSolved++:null;

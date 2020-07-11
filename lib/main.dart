@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:juz_amma_puzzle/services/quran_api.dart';
 import 'package:juz_amma_puzzle/services/service_locator.dart';
-import 'package:juz_amma_puzzle/ui/home.dart';
+import 'package:juz_amma_puzzle/ui/home/home.dart';
 //import 'package:juz_amma_puzzle/engine/jumbled.dart';
 import 'package:juz_amma_puzzle/ui/theme.dart';
 

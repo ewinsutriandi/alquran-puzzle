@@ -135,7 +135,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
                 LinearPercentIndicator(                  
                   width: 175,
                   lineHeight: 15,
-                  animation: true,
+                  //animation: true,
                   animationDuration: 1000,
                   alignment: MainAxisAlignment.center,                  
                   progressColor: Colors.green,
@@ -263,6 +263,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
   }
 
   Widget _originalText() {
+    bool endOfSura = _puzzle.endOfIdx;    
     TextStyle puzzleTextStyle = TextStyle(
       fontSize: 25.0,
       letterSpacing: 1.5,
@@ -289,16 +290,19 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
           ),
           SizedBox(height: 8,),
           RaisedButton(            
-            child: Text('Lanjut',),
+            child: Text(endOfSura?'Kembali':'Lanjut',),
             //color: Colors.orange,
-            onPressed: newPuzzle
-            ),
+            onPressed: () {
+              if (endOfSura) {
+                Navigator.of(context).pop();
+              } else {
+                newPuzzle();
+              }
+            }
+          ),
         ],
-      )
-      
-      
-    );
-    
+      )            
+    );    
   }
 
   Widget _choppedText() {
@@ -364,7 +368,9 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
   void _postCheck(bool correct) {
     if (correct) {
       print('correct');
-      GetIt.I<StatsAPI>().recordCompletion(_sura, _puzzle.currentIdx);      
+      GetIt.I<StatsAPI>().recordCompletion(_sura, _puzzle.currentIdx).then((value) {
+        _statsSura = GetIt.I<StatsAPI>().getSuraStats(_sura);
+      });            
       setState(() {
         _screenStatus = ScreenStatus.showoritext;
       });      
