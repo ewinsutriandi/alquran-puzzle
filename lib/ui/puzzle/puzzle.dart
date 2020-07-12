@@ -13,8 +13,7 @@ class SuraPuzzlePage extends StatefulWidget {
   final Sura sura;
   @override
   SuraPuzzlePageState createState() => SuraPuzzlePageState();
-  const SuraPuzzlePage({@required this.sura});  
-  
+  const SuraPuzzlePage({@required this.sura});
 }
 
 class SuraPuzzlePageState extends State<SuraPuzzlePage> {
@@ -25,9 +24,8 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
   List<Widget> _tiles;
   int currentPosition = 0;
   @override
-  
   initState() {
-    super.initState();    
+    super.initState();
     _sura = widget.sura;
     _statsSura = GetIt.I<StatsAPI>().getSuraStats(_sura);
     _puzzle = JumbledTextPuzzle(_sura.contents);
@@ -41,9 +39,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
     _puzzle.newGame();
     _screenStatus = ScreenStatus.showpuzzle;
     _prepareTiles();
-    setState(() {
-      
-    });    
+    setState(() {});
   }
 
   @override
@@ -54,62 +50,58 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
   Widget _pageScaffold(Widget pg) {
     return Scaffold(
       body: pg,
-      //bottomNavigationBar: _navigationBar(),   
+      //bottomNavigationBar: _navigationBar(),
     );
   }
 
   Widget _sliver() {
     return CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            title: Text('Surat ${_sura.tIndonesia}',style: AppTheme.appBarTitleStyle(),),
-            centerTitle: true,            
-            pinned: true,            
-            forceElevated: true,            
-          ),          
-          SliverToBoxAdapter(
-            child: _suraProgress(),
-          ), 
-          SliverPadding(
-            padding: EdgeInsets.fromLTRB(16, 8 , 16, 8),
-            sliver: SliverToBoxAdapter(
-              child:_navigationBar()
-            ),
+      slivers: <Widget>[
+        SliverAppBar(
+          title: Text(
+            'Surat ${_sura.tIndonesia}',
+            style: AppTheme.appBarTitleStyle(),
           ),
-          SliverToBoxAdapter(
-            child: _position(),
+          centerTitle: true,
+          pinned: true,
+          forceElevated: true,
+        ),
+        SliverToBoxAdapter(
+          child: _suraProgress(),
+        ),
+        SliverPadding(
+          padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+          sliver: SliverToBoxAdapter(child: _navigationBar()),
+        ),
+        SliverToBoxAdapter(
+          child: _position(),
+        ),
+
+        SliverPadding(
+          padding: EdgeInsets.fromLTRB(16, 16, 16, 4),
+          sliver: SliverToBoxAdapter(
+            child: _mainScreen(),
           ),
-          
-          SliverPadding(
-            padding: EdgeInsets.fromLTRB(16, 16 , 16, 4),
-            sliver: SliverToBoxAdapter(
-              child: _mainScreen(),              
-            ),
-          )
-          //*/
-                                      
-        ],
-      );
+        )
+        //*/
+      ],
+    );
   }
 
-  Widget _suraInfo() {    
+  Widget _suraInfo() {
     return Container(
-      padding: EdgeInsets.fromLTRB(16,4,16,4),
+      padding: EdgeInsets.fromLTRB(16, 4, 16, 4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          CircularProgressIndicator(
-
-          ),
-          Text(_sura.name,
-            style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold
-              ),
+          CircularProgressIndicator(),
+          Text(
+            _sura.name,
+            style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
           ),
           Text('${_sura.trIndonesia}, '),
           Text('${_sura.typeIndonesia}, '),
-          Text('Terdiri atas ${_sura.totalAyas} ayat '),          
+          Text('Terdiri atas ${_sura.totalAyas} ayat '),
         ],
       ),
     );
@@ -121,30 +113,27 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           StatsSura st = snapshot.data;
-          return Container(            
-            padding: EdgeInsets.fromLTRB(24,8,24,4),
+          return Container(
+            padding: EdgeInsets.fromLTRB(24, 8, 24, 4),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Text(_sura.name,
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.bold
-                      ),
-                  ),                                
-                LinearPercentIndicator(                  
+                Text(
+                  _sura.name,
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+                ),
+                LinearPercentIndicator(
                   width: 175,
                   lineHeight: 15,
                   //animation: true,
                   animationDuration: 1000,
-                  alignment: MainAxisAlignment.center,                  
+                  alignment: MainAxisAlignment.center,
                   progressColor: Colors.green,
-                  percent: st.progress,                  
+                  percent: st.progress,
                 ),
-                SizedBox(
-                  height: 4
-                ),                
-                Text('Sudah diselesaikan: ${st.ayaSolved} dari ${st.totalAya} ayat')
+                SizedBox(height: 4),
+                Text(
+                    'Sudah diselesaikan: ${st.ayaSolved} dari ${st.totalAya} ayat')
               ],
             ),
           );
@@ -153,8 +142,8 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
             child: CircularProgressIndicator(),
           );
         }
-      },      
-    );    
+      },
+    );
   }
 
   Widget _position() {
@@ -164,80 +153,69 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
           return ScaleTransition(child: child, scale: animation);
         },
         child: Center(
-          child:Text('Ayat $currentPosition dari ${_sura.totalAyas}')
-        )
-      );          
+            child: Text('Ayat $currentPosition dari ${_sura.totalAyas}')));
   }
 
   Widget _navigationBar() {
     double iconSize = 16;
     Color iconColor = Colors.deepOrange;
     return Container(
-      //padding: EdgeInsets.all(4),      
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
-        //borderRadius: BorderRadius.circular(8)
-      ),
-      child: Row(        
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          IconButton(
-            color: iconColor,
-            iconSize: iconSize,
-            icon: Icon(Icons.first_page),
-            tooltip: 'ke ayat pertama',
-            onPressed: () {
-              
-            },
-          ),
-          IconButton(
-            color: iconColor,
-            iconSize: iconSize,
-            icon: Icon(Icons.navigate_before),
-            tooltip: 'ke ayat pertama',
-            onPressed: () {
-              
-            },
-          ),
-          IconButton(
-            color: iconColor,
-            iconSize: iconSize,
-            icon: Icon(Icons.shuffle),
-            tooltip: 'ke ayat yang belum diselesaikan',
-            onPressed: () {
-              
-            },
-          ),          
-          IconButton(
-            color: iconColor,
-            iconSize: iconSize,
-            icon: Icon(Icons.navigate_next),
-            tooltip: 'ke ayat terakhir',
-            onPressed: () {
-              
-            },
-          ),
-          IconButton(
-            color: iconColor,
-            iconSize: iconSize,
-            icon: Icon(Icons.last_page),
-            tooltip: 'ke ayat terakhir',
-            onPressed: () {
-              
-            },
-          ),  
-        ],
-      )
-    );    
+        //padding: EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          color: Colors.grey[200],
+          //borderRadius: BorderRadius.circular(8)
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            IconButton(
+              color: iconColor,
+              iconSize: iconSize,
+              icon: Icon(Icons.first_page),
+              tooltip: 'ke ayat pertama',
+              onPressed: () {},
+            ),
+            IconButton(
+              color: iconColor,
+              iconSize: iconSize,
+              icon: Icon(Icons.navigate_before),
+              tooltip: 'ke ayat pertama',
+              onPressed: () {},
+            ),
+            IconButton(
+              color: iconColor,
+              iconSize: iconSize,
+              icon: Icon(Icons.shuffle),
+              tooltip: 'ke ayat yang belum diselesaikan',
+              onPressed: () {},
+            ),
+            IconButton(
+              color: iconColor,
+              iconSize: iconSize,
+              icon: Icon(Icons.navigate_next),
+              tooltip: 'ke ayat terakhir',
+              onPressed: () {},
+            ),
+            IconButton(
+              color: iconColor,
+              iconSize: iconSize,
+              icon: Icon(Icons.last_page),
+              tooltip: 'ke ayat terakhir',
+              onPressed: () {},
+            ),
+          ],
+        ));
   }
 
   Widget _hint() {
     return Container(
       padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
       child: Center(
-        child: Text('Tahan dan geser potongan ayat yang ada untuk memindahkannya sesuai urutan seharusnya', textAlign: TextAlign.center,)
-      ),
+          child: Text(
+        'Tahan dan geser potongan ayat yang ada untuk memindahkannya sesuai urutan seharusnya',
+        textAlign: TextAlign.center,
+      )),
     );
   }
 
@@ -247,106 +225,100 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
       main = _originalText();
     } else {
       main = Column(
-        children: <Widget>[          
-          _choppedText()
-        ],
+        children: <Widget>[_choppedText()],
       );
-    }   
-    return
-      AnimatedSwitcher(
-        duration: const Duration(seconds: 1),                
-        transitionBuilder: (Widget child, Animation<double> animation) {
-            return ScaleTransition(child: child, scale: animation,);
-          },          
-        child: main,
-      );    
+    }
+    return AnimatedSwitcher(
+      duration: const Duration(seconds: 1),
+      transitionBuilder: (Widget child, Animation<double> animation) {
+        return ScaleTransition(
+          child: child,
+          scale: animation,
+        );
+      },
+      child: main,
+    );
   }
 
   Widget _originalText() {
-    bool endOfSura = _puzzle.endOfIdx;    
+    bool endOfSura = _puzzle.endOfIdx;
     TextStyle puzzleTextStyle = TextStyle(
-      fontSize: 25.0,
-      letterSpacing: 1.5,
-      color: Colors.orange,
-      fontWeight: FontWeight.bold
-    );
+        fontSize: 25.0,
+        letterSpacing: 1.5,
+        color: Colors.orange,
+        fontWeight: FontWeight.bold);
 
     return Container(
-      padding: EdgeInsets.fromLTRB(8, 24, 8, 24),
-      decoration: BoxDecoration(
-        color: Colors.white
-      ),
-      child: Column(
-        children: <Widget>[
-          Icon(Icons.thumb_up,color: Colors.green,size: 25),
-          SizedBox(height: 8,),
-          Row(                        
-            children: <Widget>[
-            Expanded(child: Text(_puzzle.originalText(),
-              textDirection: TextDirection.rtl,
-              textAlign: TextAlign.center,
-              style: puzzleTextStyle,))
-            ],
-          ),
-          SizedBox(height: 8,),
-          RaisedButton(            
-            child: Text(endOfSura?'Kembali':'Lanjut',),
-            //color: Colors.orange,
-            onPressed: () {
-              if (endOfSura) {
-                Navigator.of(context).pop();
-              } else {
-                newPuzzle();
-              }
-            }
-          ),
-        ],
-      )            
-    );    
+        padding: EdgeInsets.fromLTRB(8, 24, 8, 24),
+        decoration: BoxDecoration(color: Colors.white),
+        child: Column(
+          children: <Widget>[
+            Icon(Icons.thumb_up, color: Colors.green, size: 25),
+            SizedBox(
+              height: 8,
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                    child: Text(
+                  _puzzle.originalText(),
+                  textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.center,
+                  style: puzzleTextStyle,
+                ))
+              ],
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            RaisedButton(
+                child: Text(
+                  endOfSura ? 'Kembali' : 'Lanjut',
+                ),
+                //color: Colors.orange,
+                onPressed: () {
+                  if (endOfSura) {
+                    Navigator.of(context).pop();
+                  } else {
+                    newPuzzle();
+                  }
+                }),
+          ],
+        ));
   }
 
   Widget _choppedText() {
-    Widget reorWrap = ReorderableWrap(        
-      spacing: 8.0,
-      runSpacing: 4.0,
-      padding: const EdgeInsets.all(8),
-      textDirection: TextDirection.rtl,
-      children: _tiles,        
-      onReorder: _onReorder,
-      onNoReorder: (int index) {        
-        debugPrint(
-            '${DateTime.now().toString().substring(5, 22)} reorder cancelled. index:$index');
-      },
-      onReorderStarted: (int index) {        
-        debugPrint(
-            '${DateTime.now().toString().substring(5, 22)} reorder started: index:$index');
-        }
-    );
-    
+    Widget reorWrap = ReorderableWrap(
+        spacing: 8.0,
+        runSpacing: 4.0,
+        padding: const EdgeInsets.all(8),
+        textDirection: TextDirection.rtl,
+        children: _tiles,
+        onReorder: _onReorder,
+        onNoReorder: (int index) {
+          debugPrint(
+              '${DateTime.now().toString().substring(5, 22)} reorder cancelled. index:$index');
+        },
+        onReorderStarted: (int index) {
+          debugPrint(
+              '${DateTime.now().toString().substring(5, 22)} reorder started: index:$index');
+        });
+
     Widget col = Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-            _hint(),
-            reorWrap 
-          ],
-      );
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[_hint(), reorWrap],
+    );
 
     return Container(
       padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
-      decoration: BoxDecoration(
-        color: Colors.orange[50]
-      ),
+      decoration: BoxDecoration(color: Colors.orange[50]),
       child: col,
     );
-     
   }
 
   void _prepareTiles() {
-    TextStyle puzzleTextStyle = TextStyle(
-      fontSize: 21.0,
-      letterSpacing: 1.5,
-      color: Colors.white
-    );
+    TextStyle puzzleTextStyle =
+        TextStyle(fontSize: 21.0, letterSpacing: 1.5, color: Colors.white);
     _tiles = _puzzle.choppedTexts.map((txt) {
       return Chip(
         key: ValueKey(txt),
@@ -358,26 +330,26 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
   }
 
   void _onReorder(int oldIndex, int newIndex) {
-      setState(() {
-        Widget row = _tiles.removeAt(oldIndex);
-        _tiles.insert(newIndex, row);
-        _puzzle.reorder(oldIndex, newIndex);
-      });
-    }
-  
+    setState(() {
+      Widget row = _tiles.removeAt(oldIndex);
+      _tiles.insert(newIndex, row);
+      _puzzle.reorder(oldIndex, newIndex);
+    });
+  }
+
   void _postCheck(bool correct) {
     if (correct) {
       print('correct');
-      GetIt.I<StatsAPI>().recordCompletion(_sura, _puzzle.currentIdx).then((value) {
+      GetIt.I<StatsAPI>()
+          .recordCompletion(_sura, _puzzle.currentIdx, _puzzle.endOfIdx)
+          .then((value) {
         _statsSura = GetIt.I<StatsAPI>().getSuraStats(_sura);
-      });            
-      setState(() {
-        _screenStatus = ScreenStatus.showoritext;
-      });      
+        setState(() {
+          _screenStatus = ScreenStatus.showoritext;
+        });
+      });
     }
   }
 }
 
-enum ScreenStatus {
-  showpuzzle,showoritext
-}
+enum ScreenStatus { showpuzzle, showoritext }
