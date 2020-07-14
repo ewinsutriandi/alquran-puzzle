@@ -2,7 +2,9 @@ class StatsSura {
   int gamePlayed;
   int ayaSolved;
   int totalAya;
-  StatsSura({this.gamePlayed, this.ayaSolved, this.totalAya});
+  int completionCount;
+  StatsSura(
+      {this.gamePlayed, this.ayaSolved, this.totalAya, this.completionCount});
   double get progress => ayaSolved / totalAya;
   bool get completed => ayaSolved == totalAya ? true : false;
   String toString() {
@@ -21,12 +23,14 @@ class StatsGroup {
   int totalSura;
   int ayaSolved;
   int totalAya;
+  int completionCount;
   StatsGroup(
       {this.gamePlayed,
       this.suraSolved,
       this.totalSura,
       this.ayaSolved,
-      this.totalAya});
+      this.totalAya,
+      this.completionCount});
   double get progressSura => suraSolved / totalSura;
   double get progressAya => ayaSolved / totalAya;
   bool get completed => ayaSolved == totalAya ? true : false;
@@ -37,6 +41,7 @@ class StatsGroup {
     int totalSura = 0;
     int ayaSolved = 0;
     int totalAya = 0;
+    int minCompletion = statsL[0].completionCount;
     statsL.forEach((stats) {
       //print(stats.toString());
       gamePlayed += stats.gamePlayed;
@@ -44,13 +49,17 @@ class StatsGroup {
       stats.completed ? suraSolved++ : null;
       ayaSolved += stats.ayaSolved;
       totalAya += stats.totalAya;
+      minCompletion > stats.completionCount
+          ? minCompletion = stats.completionCount
+          : null;
     });
     return StatsGroup(
         ayaSolved: ayaSolved,
         gamePlayed: gamePlayed,
         suraSolved: suraSolved,
         totalAya: totalAya,
-        totalSura: totalSura);
+        totalSura: totalSura,
+        completionCount: minCompletion);
   }
 
   String toString() {

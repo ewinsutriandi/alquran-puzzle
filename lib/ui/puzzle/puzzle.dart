@@ -67,18 +67,17 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
           forceElevated: true,
         ),
         SliverToBoxAdapter(
+          child: _suraInfo(),
+        ),
+        SliverToBoxAdapter(
           child: _suraProgress(),
         ),
         SliverPadding(
-          padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-          sliver: SliverToBoxAdapter(child: _navigationBar()),
+          padding: EdgeInsets.fromLTRB(16, 4, 16, 0),
+          sliver: SliverToBoxAdapter(child: _position()),
         ),
-        SliverToBoxAdapter(
-          child: _position(),
-        ),
-
         SliverPadding(
-          padding: EdgeInsets.fromLTRB(16, 16, 16, 4),
+          padding: EdgeInsets.fromLTRB(16, 0, 16, 4),
           sliver: SliverToBoxAdapter(
             child: _mainScreen(),
           ),
@@ -92,48 +91,43 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
     return Container(
       padding: EdgeInsets.fromLTRB(16, 4, 16, 4),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          CircularProgressIndicator(),
           Text(
             _sura.name,
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
           ),
-          Text('${_sura.trIndonesia}, '),
-          Text('${_sura.typeIndonesia}, '),
-          Text('Terdiri atas ${_sura.totalAyas} ayat '),
+          Text('${_sura.trIndonesia} '),
+          Text('${_sura.totalAyas} ayat, ${_sura.typeIndonesia}'),
         ],
       ),
     );
   }
 
   Widget _suraProgress() {
+    TextStyle progressTxtStyle = TextStyle(fontSize: 12.0, color: Colors.white);
     return FutureBuilder(
       future: _statsSura,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           StatsSura st = snapshot.data;
           return Container(
-            padding: EdgeInsets.fromLTRB(24, 8, 24, 4),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+            //padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
+            child: Row(
+              //crossAxisAlignment: WrapCrossAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  _sura.name,
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-                ),
-                LinearPercentIndicator(
-                  width: 175,
-                  lineHeight: 15,
-                  //animation: true,
-                  animationDuration: 1000,
-                  alignment: MainAxisAlignment.center,
-                  progressColor: Colors.green,
-                  percent: st.progress,
-                ),
-                SizedBox(height: 4),
-                Text(
-                    'Sudah diselesaikan: ${st.ayaSolved} dari ${st.totalAya} ayat')
+                st.completed
+                    ? Chip(
+                        label: Text('Tamat ${st.completionCount} kali'),
+                        backgroundColor: Colors.green,
+                        labelStyle: progressTxtStyle,
+                      )
+                    : Chip(
+                        label: Text('Sudah diselesaikan: ${st.ayaSolved} ayat'),
+                        backgroundColor: Colors.blueGrey,
+                        labelStyle: progressTxtStyle,
+                      ),
               ],
             ),
           );
@@ -152,8 +146,38 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
         transitionBuilder: (Widget child, Animation<double> animation) {
           return ScaleTransition(child: child, scale: animation);
         },
-        child: Center(
-            child: Text('Ayat $currentPosition dari ${_sura.totalAyas}')));
+        child: Container(
+            padding: EdgeInsets.fromLTRB(8, 8, 8, 4),
+            decoration: BoxDecoration(color: Colors.orange[50]),
+            child: Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Center(
+                  child: Text('Ayat $currentPosition dari ${_sura.totalAyas}'),
+                ),
+                SizedBox(
+                  width: 127,
+                  child: RaisedButton(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        //side: BorderSide(color: Colors.red)
+                      ),
+                      child: Row(
+                        children: <Widget>[
+                          Text('Pindah ke:'),
+                          Icon(
+                            Icons.arrow_drop_down_circle,
+                            size: 27,
+                            color: Colors.grey,
+                          ),
+                        ],
+                      ),
+                      onPressed: () => print('haha')),
+                )
+              ],
+            )));
   }
 
   Widget _navigationBar() {
@@ -210,7 +234,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
 
   Widget _hint() {
     return Container(
-      padding: EdgeInsets.fromLTRB(8, 4, 8, 4),
+      padding: EdgeInsets.fromLTRB(8, 0, 8, 4),
       child: Center(
           child: Text(
         'Tahan dan geser potongan ayat yang ada untuk memindahkannya sesuai urutan seharusnya',
@@ -310,7 +334,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
     );
 
     return Container(
-      padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
+      padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
       decoration: BoxDecoration(color: Colors.orange[50]),
       child: col,
     );
@@ -320,6 +344,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
     TextStyle puzzleTextStyle =
         TextStyle(fontSize: 21.0, letterSpacing: 1.5, color: Colors.white);
     _tiles = _puzzle.choppedTexts.map((txt) {
+      //debugPrint('text: $txt');
       return Chip(
         key: ValueKey(txt),
         label: Text(txt),

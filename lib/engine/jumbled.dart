@@ -106,7 +106,7 @@ class JumbledTextPuzzle {
       }
       charPos++;
     }
-    _splittedTexts.add(fragment); // last fragment
+    fragment != '' ? _splittedTexts.add(fragment) : null; // last fragment
   }
 
   void _splitBySpace() {

@@ -12,15 +12,20 @@ class StatsApiSharedPrefImpl implements StatsAPI {
   Future<StatsSura> getSuraStats(Sura s) async {
     List<int> freq = await _readStats();
     int ayaSolved = 0, gamePlayed = 0;
+    int minCompletion = freq[s.start];
     for (int i = s.start; i < s.start + s.totalAyas; i++) {
       int aFreq = freq[i];
       gamePlayed += aFreq;
       if (aFreq > 0) {
         ayaSolved++;
       }
+      minCompletion > aFreq ? minCompletion = aFreq : null;
     }
     StatsSura stats = StatsSura(
-        gamePlayed: gamePlayed, ayaSolved: ayaSolved, totalAya: s.totalAyas);
+        gamePlayed: gamePlayed,
+        ayaSolved: ayaSolved,
+        totalAya: s.totalAyas,
+        completionCount: minCompletion);
     return stats;
   }
 
