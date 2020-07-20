@@ -29,3 +29,6 @@ flutter:
     - assets/quran-meta-id.json
     - assets/tanzil/quran-data.xml
     - assets/tanzil/quran-simple.txt
+    - assets/tanzil/id.indonesian.txt
+
+    

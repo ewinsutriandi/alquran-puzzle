@@ -3,10 +3,15 @@ import 'package:juz_amma_puzzle/model/quran.dart';
 import 'package:juz_amma_puzzle/services/quran_api.dart';
 
 class QuranData {
+  static final QuranData _singleton = QuranData._internal();
   Future<List<Sura>> _suraList;
   final sl = GetIt.instance;
   final juz30Start = 78; // an naba
-  QuranData() {
+  factory QuranData() {
+    return _singleton;
+  }
+
+  QuranData._internal() {
     _loadData();
   }
 

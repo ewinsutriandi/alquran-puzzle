@@ -279,8 +279,13 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.center,
                   style: puzzleTextStyle,
-                ))
+                )),
               ],
+            ),
+            Text(
+              _sura.contentsTrans[currentPosition - 1],
+              textAlign: TextAlign.center,
+              //style: puzzleTextStyle,
             ),
             SizedBox(
               height: 8,

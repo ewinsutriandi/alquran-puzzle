@@ -10,7 +10,8 @@ class Sura {
   String tIndonesia;
   String trIndonesia;
   List<String> contents;
+  List<String> contentsTrans;
   String toString() {
-    return name+' '+tEnglish+' '+trEnglish;
+    return name + ' ' + tEnglish + ' ' + trEnglish;
   }
 }
