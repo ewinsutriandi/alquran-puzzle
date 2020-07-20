@@ -4,7 +4,6 @@ import 'package:juz_amma_puzzle/engine/jumbled.dart';
 import 'package:juz_amma_puzzle/model/game_stats.dart';
 import 'package:juz_amma_puzzle/model/quran.dart';
 import 'package:juz_amma_puzzle/services/stats_api.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:reorderables/reorderables.dart';
 
 import '../theme.dart';
@@ -71,10 +70,6 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
         ),
         SliverToBoxAdapter(
           child: _suraProgress(),
-        ),
-        SliverPadding(
-          padding: EdgeInsets.fromLTRB(16, 4, 16, 0),
-          sliver: SliverToBoxAdapter(child: _position()),
         ),
         SliverPadding(
           padding: EdgeInsets.fromLTRB(16, 0, 16, 4),
@@ -149,87 +144,77 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
         child: Container(
             padding: EdgeInsets.fromLTRB(8, 8, 8, 4),
             decoration: BoxDecoration(color: Colors.orange[50]),
-            child: Column(
-              //mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
+                SizedBox(
+                  width: 27,
+                ),
                 Center(
-                  child: Text('Ayat $currentPosition dari ${_sura.totalAyas}'),
+                  child: Text('Ayat ke-$currentPosition'),
                 ),
                 SizedBox(
-                  width: 127,
-                  child: RaisedButton(
-                      color: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        //side: BorderSide(color: Colors.red)
-                      ),
-                      child: Row(
-                        children: <Widget>[
-                          Text('Pindah ke:'),
-                          Icon(
-                            Icons.arrow_drop_down_circle,
-                            size: 27,
-                            color: Colors.grey,
-                          ),
-                        ],
-                      ),
-                      onPressed: () => print('haha')),
-                )
+                  width: 4,
+                ),
+                _simplePopup()
               ],
             )));
   }
 
-  Widget _navigationBar() {
-    double iconSize = 16;
-    Color iconColor = Colors.deepOrange;
-    return Container(
-        //padding: EdgeInsets.all(4),
-        decoration: BoxDecoration(
-          color: Colors.grey[200],
-          //borderRadius: BorderRadius.circular(8)
+  Widget _simplePopup() {
+    return PopupMenuButton<int>(
+      child: Chip(
+        label: Icon(
+          Icons.code,
+          size: 19,
+          color: Colors.orange,
         ),
+        backgroundColor: Colors.white,
+      ),
+      itemBuilder: (context) => _popupMenuItemBuilder(),
+      onSelected: (value) => print(value),
+    );
+  }
+
+  List<PopupMenuEntry> _popupMenuItemBuilder() {
+    List<PopupMenuEntry<int>> items = [];
+    List<String> captions = [
+      'Awal surat',
+      'Ayat sebelumnya',
+      'Ayat yang belum diselesaikan',
+      'Ayat berikutnya',
+      'Akhir surat'
+    ];
+    List<IconData> icons = [
+      Icons.first_page,
+      Icons.navigate_before,
+      Icons.compare_arrows,
+      Icons.navigate_next,
+      Icons.last_page
+    ];
+    for (int i = 0; i < captions.length; i++) {
+      items.add(PopupMenuItem(
+        height: 33,
+        value: i,
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            IconButton(
-              color: iconColor,
-              iconSize: iconSize,
-              icon: Icon(Icons.first_page),
-              tooltip: 'ke ayat pertama',
-              onPressed: () {},
+            Icon(
+              icons[i],
+              size: 17,
             ),
-            IconButton(
-              color: iconColor,
-              iconSize: iconSize,
-              icon: Icon(Icons.navigate_before),
-              tooltip: 'ke ayat pertama',
-              onPressed: () {},
+            SizedBox(
+              width: 4,
             ),
-            IconButton(
-              color: iconColor,
-              iconSize: iconSize,
-              icon: Icon(Icons.shuffle),
-              tooltip: 'ke ayat yang belum diselesaikan',
-              onPressed: () {},
-            ),
-            IconButton(
-              color: iconColor,
-              iconSize: iconSize,
-              icon: Icon(Icons.navigate_next),
-              tooltip: 'ke ayat terakhir',
-              onPressed: () {},
-            ),
-            IconButton(
-              color: iconColor,
-              iconSize: iconSize,
-              icon: Icon(Icons.last_page),
-              tooltip: 'ke ayat terakhir',
-              onPressed: () {},
-            ),
+            Text(
+              captions[i],
+              style: TextStyle(fontSize: 13, fontStyle: FontStyle.italic),
+            )
           ],
-        ));
+        ),
+      ));
+    }
+    return items;
   }
 
   Widget _hint() {
@@ -274,10 +259,15 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
 
     return Container(
         padding: EdgeInsets.fromLTRB(8, 24, 8, 24),
-        decoration: BoxDecoration(color: Colors.white),
+        decoration: BoxDecoration(color: Colors.orange[50]),
         child: Column(
           children: <Widget>[
-            Icon(Icons.thumb_up, color: Colors.green, size: 25),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text('Ayat ke-$currentPosition'),
+              ],
+            ),
             SizedBox(
               height: 8,
             ),
@@ -330,7 +320,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
 
     Widget col = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[_hint(), reorWrap],
+      children: <Widget>[_position(), _hint(), reorWrap],
     );
 
     return Container(

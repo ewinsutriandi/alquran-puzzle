@@ -89,6 +89,8 @@ class LastSession {
   LastSession.fromstat(
       this.suraIdx, this.ayaNumber, this.timestamp, this.completed);
 
+  LastSession.nullData();
+
   String toString() {
     return [
       suraIdx.toString(),
@@ -100,6 +102,9 @@ class LastSession {
 
   static LastSession fromString(String s) {
     print('LAST SESSION from string: $s');
+    if (s == null) {
+      return LastSession.nullData();
+    }
     List<String> vals = s.split(';');
     return LastSession.fromstat(int.parse(vals[0]), int.parse(vals[1]),
         int.parse(vals[2]), int.parse(vals[3]));

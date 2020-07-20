@@ -41,12 +41,22 @@ class LastSessionRecordState extends State<LastSessionRecord> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           LastSession ls = snapshot.data;
+          Widget details;
+          if (ls.suraIdx != null) {
+            debugPrint('ls is not null');
+            details = _sessionDetails(ls);
+          } else {
+            debugPrint('ls is null');
+            details = Center(
+              child: Text('Tidak ada data'),
+            );
+          }
           return Container(
               padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
               decoration: BoxDecoration(
                   color: widget._bgColor,
                   borderRadius: BorderRadius.all(Radius.circular(16))),
-              child: _sessionDetails(ls));
+              child: details);
         } else {
           return Center(
             child: CircularProgressIndicator(),
