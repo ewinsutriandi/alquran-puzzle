@@ -6,4 +6,5 @@ abstract class StatsAPI {
   Future<StatsGroup> getStatsGroup(List<Sura> listSura);
   Future<void> recordCompletion(Sura s, int ayaNumber, bool completed);
   Future<LastSession> lastSession();
+  Future<List<Sura>> suraRecommendation();
 }

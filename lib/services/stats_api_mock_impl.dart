@@ -43,4 +43,10 @@ class StatsAPIMockImpl implements StatsAPI {
     // TODO: implement recordLastSession
     throw UnimplementedError();
   }
+
+  @override
+  Future<List<Sura>> suraRecommendation() {
+    // TODO: implement suraRecommendation
+    throw UnimplementedError();
+  }
 }

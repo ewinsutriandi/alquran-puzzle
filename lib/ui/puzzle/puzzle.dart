@@ -242,6 +242,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
       transitionBuilder: (Widget child, Animation<double> animation) {
         return ScaleTransition(
           child: child,
+          //turns: animation,
           scale: animation,
         );
       },

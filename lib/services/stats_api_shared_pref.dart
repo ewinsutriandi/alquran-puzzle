@@ -99,4 +99,10 @@ class StatsApiSharedPrefImpl implements StatsAPI {
     String s = prefs.getString(LAST_SESSION_KEY);
     return LastSession.fromString(s);
   }
+
+  @override
+  Future<List<Sura>> suraRecommendation() {
+    // TODO: implement suraRecommendation
+    throw UnimplementedError();
+  }
 }

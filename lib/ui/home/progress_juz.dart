@@ -112,7 +112,7 @@ class ProgressJuzAmmaState extends State<ProgressJuzAmma> {
           style: widget.cntStyle,
         ),
         Text(
-          '${stats.gamePlayed} sesi',
+          '${stats.suraSolved} surat',
           style: widget.cntStyle,
         ),
         _openList()

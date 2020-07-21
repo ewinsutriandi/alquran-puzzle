@@ -111,7 +111,7 @@ class MainProgressState extends State<MainProgress> {
           style: widget.cntStyle,
         ),
         Text(
-          '${stats.gamePlayed} sesi',
+          '${stats.suraSolved} surat',
           style: widget.cntStyle,
         ),
         _openList()
