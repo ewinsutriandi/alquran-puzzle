@@ -39,9 +39,8 @@ class ProgressJuzAmmaState extends State<ProgressJuzAmma> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: GetIt.I<QuranData>()
-          .suraListJuzAmma
-          .then((value) => GetIt.I<StatsAPI>().getStatsGroup(value)),
+      future: GetIt.I<StatsAPI>()
+          .getStatsGroup(GetIt.I<QuranData>().suraListJuzAmma),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           StatsGroup stats = snapshot.data;

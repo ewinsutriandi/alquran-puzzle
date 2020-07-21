@@ -38,9 +38,7 @@ class MainProgressState extends State<MainProgress> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: GetIt.I<QuranData>()
-          .suraList
-          .then((value) => GetIt.I<StatsAPI>().getStatsGroup(value)),
+      future: GetIt.I<StatsAPI>().getStatsGroup(GetIt.I<QuranData>().suraList),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           StatsGroup stats = snapshot.data;

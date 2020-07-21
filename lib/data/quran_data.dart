@@ -3,37 +3,34 @@ import 'package:juz_amma_puzzle/model/quran.dart';
 import 'package:juz_amma_puzzle/services/quran_api.dart';
 
 class QuranData {
-  static final QuranData _singleton = QuranData._internal();
-  Future<List<Sura>> _suraList;
-  final sl = GetIt.instance;
+  Future<bool> onReady;
+  List<Sura> _suraList;
   final juz30Start = 78; // an naba
-  factory QuranData() {
-    return _singleton;
+  List<Sura> get suraList => _suraList;
+
+  QuranData() {
+    onReady = new Future(() {
+      return _loadData();
+    });
   }
 
-  QuranData._internal() {
-    _loadData();
-  }
-
-  Future<List<Sura>> get suraList => _suraList;
-
-  Future<List<Sura>> get suraListJuzAmma async {
-    List<Sura> suraList = await _suraList;
+  List<Sura> get suraListJuzAmma {
     List<Sura> juzAmma = [];
     for (int i = juz30Start; i <= 114; i++) {
-      Sura s = suraList[i - 1];
+      Sura s = _suraList[i - 1];
       juzAmma.add(s);
     }
     List<Sura> reversed = new List.from(juzAmma.reversed);
     return reversed;
   }
 
-  void _loadData() async {
-    _suraList = sl.get<QuranAPI>().getSuraList();
+  Future<bool> _loadData() async {
+    print('QURAN DATA: load sura list');
+    _suraList = await GetIt.I<QuranAPI>().getSuraList();
+    return true;
   }
 
-  Future<Sura> getByIndex(int idx) async {
-    List<Sura> suraList = await _suraList;
-    return suraList[idx - 1];
+  Sura getByIndex(int idx) {
+    return _suraList[idx - 1];
   }
 }

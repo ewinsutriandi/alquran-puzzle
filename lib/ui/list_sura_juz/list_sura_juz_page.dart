@@ -37,7 +37,7 @@ class ListSuraJuzPage extends StatefulWidget {
 }
 
 class ListSuraPageState extends State<ListSuraJuzPage> {
-  Future<List<Sura>> _suraList;
+  List<Sura> _suraList;
   String _searchPhrase;
   TextEditingController _searchController = TextEditingController();
   int _suraFound;
@@ -55,26 +55,24 @@ class ListSuraPageState extends State<ListSuraJuzPage> {
 
   Future<List<Sura>> get _filteredList async {
     List<Sura> filtered = [];
-    await _suraList.then((value) {
-      if (_searchPhrase == null || _searchPhrase.isEmpty) {
-        filtered = value;
-      } else {
-        _suraFound = 0;
-        for (int i = 0; i < value.length; i++) {
-          Sura s = value[i];
-          if (s.name.toLowerCase().contains(_searchPhrase) ||
-              s.tEnglish.toLowerCase().contains(_searchPhrase) ||
-              s.tIndonesia.toLowerCase().contains(_searchPhrase) ||
-              s.trIndonesia.toLowerCase().contains(_searchPhrase) ||
-              s.trEnglish.toLowerCase().contains(_searchPhrase) ||
-              s.typeIndonesia.toLowerCase().contains(_searchPhrase) ||
-              s.type.toLowerCase().contains(_searchPhrase)) {
-            filtered.add(s);
-            _suraFound++;
-          }
+    if (_searchPhrase == null || _searchPhrase.isEmpty) {
+      filtered = _suraList;
+    } else {
+      _suraFound = 0;
+      for (int i = 0; i < _suraList.length; i++) {
+        Sura s = _suraList[i];
+        if (s.name.toLowerCase().contains(_searchPhrase) ||
+            s.tEnglish.toLowerCase().contains(_searchPhrase) ||
+            s.tIndonesia.toLowerCase().contains(_searchPhrase) ||
+            s.trIndonesia.toLowerCase().contains(_searchPhrase) ||
+            s.trEnglish.toLowerCase().contains(_searchPhrase) ||
+            s.typeIndonesia.toLowerCase().contains(_searchPhrase) ||
+            s.type.toLowerCase().contains(_searchPhrase)) {
+          filtered.add(s);
+          _suraFound++;
         }
       }
-    });
+    }
     return filtered;
   }
 
@@ -125,16 +123,7 @@ class ListSuraPageState extends State<ListSuraJuzPage> {
           child: Container(
             color: widget._darkColor,
             padding: const EdgeInsets.all(8.0),
-            child: FutureBuilder(
-              future: _suraList,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListSuraProgressAll(suraList: snapshot.data);
-                } else {
-                  return CircularProgressIndicator();
-                }
-              },
-            ),
+            child: ListSuraProgressAll(suraList: _suraList),
           ),
         ),
         SliverPersistentHeader(
