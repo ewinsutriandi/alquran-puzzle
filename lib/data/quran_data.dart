@@ -5,7 +5,7 @@ import 'package:juz_amma_puzzle/services/quran_api.dart';
 class QuranData {
   Future<bool> onReady;
   List<Sura> _suraList;
-  final juz30Start = 78; // an naba
+  static final juz30Start = 78; // an naba
   List<Sura> get suraList => _suraList;
 
   QuranData() {
