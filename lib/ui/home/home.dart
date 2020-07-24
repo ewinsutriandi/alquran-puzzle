@@ -36,7 +36,7 @@ class HomeState extends State<Home> {
             SizedBox(
               height: 16,
             ),
-            Hello(Home._userName),
+            Hello(),
             _caption('PROGRESS'),
             Row(
               children: <Widget>[

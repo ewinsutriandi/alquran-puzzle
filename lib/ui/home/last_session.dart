@@ -47,8 +47,28 @@ class LastSessionRecordState extends State<LastSessionRecord> {
             details = _sessionDetails(ls);
           } else {
             debugPrint('ls is null');
-            details = Center(
-              child: Text('Tidak ada data'),
+            details = Container(
+              padding: EdgeInsets.all(8),
+              child: Center(
+                  child: Column(
+                children: <Widget>[
+                  Text('Belum ada data'),
+                  SizedBox(
+                    height: 4,
+                  ),
+                  RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      'Mulai bermain',
+                      style: TextStyle(color: Colors.teal[800]),
+                    ),
+                    color: Colors.grey[100],
+                  ),
+                ],
+              )),
             );
           }
           return Container(

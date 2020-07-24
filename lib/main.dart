@@ -62,16 +62,18 @@ class _MyAppState extends State<MyApp> {
         },
       ),
     ),
-    Container(
-      color: Colors.blue,
-    ),
-    Container(
-      color: Colors.green,
-    ),
-    Container(
-      color: Colors.white,
-    ),
+    _underConstruction(),
+    _underConstruction(),
+    _underConstruction(),
   ];
+
+  static Widget _underConstruction() {
+    return Container(
+      child: Center(
+        child: Text('Fitur belum tersedia dalam versi ujicoba ini'),
+      ),
+    );
+  }
 
   Widget bottomBar() {
     Color fgColor = Colors.white;
