@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:juz_amma_puzzle/model/quran.dart';
 import 'package:juz_amma_puzzle/services/recommender.dart';
+import 'package:juz_amma_puzzle/ui/puzzle/puzzle.dart';
+import 'package:juz_amma_puzzle/ui/theme.dart';
 
 class Recommend extends StatefulWidget {
   @override
@@ -105,7 +107,11 @@ class SingleRecommendation extends StatelessWidget {
             minWidth: 50.0,
             height: 25,
             child: RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                debugPrint('RECOMMEND open recommended sura ${sura.name}');
+                SuraPuzzlePage puzzle = SuraPuzzlePage(sura: sura);
+                Navigator.push(context, AppRouteTransition(toPage: puzzle));
+              },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4.0),
               ),
