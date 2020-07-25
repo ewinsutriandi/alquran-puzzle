@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:juz_amma_puzzle/ui/home/hello.dart';
 import 'package:juz_amma_puzzle/ui/home/last_session.dart';
@@ -48,9 +49,9 @@ class HomeState extends State<Home> {
               ],
             ),
             _caption('SESI TERAKHIR'),
-            LastSessionRecord(),
+            LastSessionRecord(reload),
             _caption('REKOMENDASI'),
-            Recommend()
+            Recommend(reload)
           ],
         ),
       ),

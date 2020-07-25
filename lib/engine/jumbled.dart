@@ -29,6 +29,11 @@ class JumbledTextPuzzle {
     }
   }
 
+  void newGameOnTextIdx(int idx) {
+    _textIdx = idx;
+    newGame();
+  }
+
   void setChoppingRules(int minSegment, int maxSegment, int chrMax) {
     this._minSegment = minSegment;
     this._maxSegment = maxSegment;

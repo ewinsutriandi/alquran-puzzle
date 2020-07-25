@@ -8,6 +8,8 @@ import 'package:juz_amma_puzzle/ui/theme.dart';
 class Recommend extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => RecommendState();
+  final Function callback;
+  Recommend(this.callback);
 }
 
 class RecommendState extends State<Recommend> {
@@ -29,24 +31,24 @@ class RecommendState extends State<Recommend> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Expanded(
-                      child: SingleRecommendation(
-                    sura: recs[0],
-                    bgColor: Colors.purple[50],
-                    fgColor: Colors.purple[600],
+                      child: _recommend(
+                    recs[0],
+                    Colors.purple[50],
+                    Colors.purple[600],
                   )),
                   SizedBox(width: 4),
                   Expanded(
-                      child: SingleRecommendation(
-                    sura: recs[1],
-                    bgColor: Colors.brown[50],
-                    fgColor: Colors.brown[600],
+                      child: _recommend(
+                    recs[1],
+                    Colors.brown[50],
+                    Colors.brown[600],
                   )),
                   SizedBox(width: 4),
                   Expanded(
-                    child: SingleRecommendation(
-                      sura: recs[2],
-                      bgColor: Colors.indigo[50],
-                      fgColor: Colors.indigo[600],
+                    child: _recommend(
+                      recs[2],
+                      Colors.indigo[50],
+                      Colors.indigo[600],
                     ),
                   )
                 ]),
@@ -59,15 +61,8 @@ class RecommendState extends State<Recommend> {
       },
     );
   }
-}
 
-class SingleRecommendation extends StatelessWidget {
-  final Sura sura;
-  final Color bgColor;
-  final Color fgColor;
-  SingleRecommendation({this.sura, this.bgColor, this.fgColor});
-  @override
-  Widget build(BuildContext context) {
+  Widget _recommend(Sura sura, Color bgColor, Color fgColor) {
     return Container(
       padding: EdgeInsets.fromLTRB(4, 16, 4, 8),
       decoration: BoxDecoration(
@@ -110,7 +105,8 @@ class SingleRecommendation extends StatelessWidget {
               onPressed: () {
                 debugPrint('RECOMMEND open recommended sura ${sura.name}');
                 SuraPuzzlePage puzzle = SuraPuzzlePage(sura: sura);
-                Navigator.push(context, AppRouteTransition(toPage: puzzle));
+                Navigator.push(context, AppRouteTransition(toPage: puzzle))
+                    .then((value) => widget.callback());
               },
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4.0),

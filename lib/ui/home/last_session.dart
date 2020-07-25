@@ -5,8 +5,12 @@ import 'package:juz_amma_puzzle/data/quran_data.dart';
 import 'package:juz_amma_puzzle/model/game_stats.dart';
 import 'package:juz_amma_puzzle/model/quran.dart';
 import 'package:juz_amma_puzzle/services/stats_api.dart';
+import 'package:juz_amma_puzzle/ui/puzzle/puzzle.dart';
+import 'package:juz_amma_puzzle/ui/theme.dart';
 
 class LastSessionRecord extends StatefulWidget {
+  final Function callback;
+  LastSessionRecord(this.callback);
   final Color _bgColor = Colors.teal[50];
   final TextStyle suraNameStyle = TextStyle(
       color: Colors.teal[800],
@@ -132,7 +136,29 @@ class LastSessionRecordState extends State<LastSessionRecord> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    SuraPuzzlePage puzzle;
+                    if (ls.completed == 1) {
+                      debugPrint(
+                          'LAST SESS open new sura after ${s.name} based on last session activity');
+                      Sura nextSura = GetIt.I<QuranData>().getByIndex(
+                          s.idx < QuranData.juz30Start ? s.idx + 1 : s.idx - 1);
+                      puzzle = SuraPuzzlePage(sura: nextSura);
+                    } else {
+                      debugPrint(
+                          'LAST SESS open ${s.name} next aya based on last session activity');
+                      puzzle = SuraPuzzlePage(
+                        sura: s,
+                        ayaNumber: ls.ayaNumber,
+                      );
+                    }
+                    Navigator.push(context, AppRouteTransition(toPage: puzzle))
+                        .then((value) {
+                      setState(() {});
+                      debugPrint('LAST SESS - calling Home callback');
+                      widget.callback();
+                    });
+                  },
                   child: Text(
                     ls.completed == 1
                         ? 'Buka surat berikutnya'

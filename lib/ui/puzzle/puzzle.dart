@@ -10,9 +10,10 @@ import '../theme.dart';
 
 class SuraPuzzlePage extends StatefulWidget {
   final Sura sura;
+  final int ayaNumber;
   @override
   SuraPuzzlePageState createState() => SuraPuzzlePageState();
-  const SuraPuzzlePage({@required this.sura});
+  const SuraPuzzlePage({@required this.sura, this.ayaNumber});
 }
 
 class SuraPuzzlePageState extends State<SuraPuzzlePage> {
@@ -29,13 +30,22 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
     _statsSura = GetIt.I<StatsAPI>().getSuraStats(_sura);
     _puzzle = JumbledTextPuzzle(_sura.contents);
     _puzzle.onCheck.listen(this._postCheck);
-    newPuzzle();
+    widget.ayaNumber == null ? newPuzzle() : newPuzzleFromAya();
   }
 
   void newPuzzle() {
     debugPrint('new puzzle');
     currentPosition++;
     _puzzle.newGame();
+    _screenStatus = ScreenStatus.showpuzzle;
+    _prepareTiles();
+    setState(() {});
+  }
+
+  void newPuzzleFromAya() {
+    debugPrint('new puzzle from aya');
+    currentPosition = widget.ayaNumber - 1;
+    _puzzle.newGameOnTextIdx(currentPosition);
     _screenStatus = ScreenStatus.showpuzzle;
     _prepareTiles();
     setState(() {});
