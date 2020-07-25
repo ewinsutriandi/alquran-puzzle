@@ -3,8 +3,13 @@ class StatsSura {
   int ayaSolved;
   int totalAya;
   int completionCount;
+  int firstUncomplete;
   StatsSura(
-      {this.gamePlayed, this.ayaSolved, this.totalAya, this.completionCount});
+      {this.gamePlayed,
+      this.ayaSolved,
+      this.totalAya,
+      this.completionCount,
+      this.firstUncomplete});
   double get progress => ayaSolved / totalAya;
   bool get completed => ayaSolved == totalAya ? true : false;
   String toString() {

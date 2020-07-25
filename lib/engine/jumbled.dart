@@ -30,7 +30,7 @@ class JumbledTextPuzzle {
   }
 
   void newGameOnTextIdx(int idx) {
-    _textIdx = idx;
+    _textIdx = idx - 1;
     newGame();
   }
 
@@ -132,7 +132,8 @@ class JumbledTextPuzzle {
       segment = words[wordPos];
       wordPos++;
       if (i < remainder) {
-        segment += words[wordPos];
+        //segment += words[wordPos];
+        segment += ' ' + words[wordPos];
         wordPos++;
       }
       _splittedTexts.add(segment);

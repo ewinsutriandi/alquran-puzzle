@@ -64,9 +64,20 @@ class LastSessionRecordState extends State<LastSessionRecord> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Sura alFatiha = GetIt.I<QuranData>().getByIndex(1);
+                      Navigator.push(
+                              context,
+                              AppRouteTransition(
+                                  toPage: SuraPuzzlePage(sura: alFatiha)))
+                          .then((value) {
+                        setState(() {});
+                        debugPrint('LAST SESS - opening Al-Fatiha');
+                        widget.callback();
+                      });
+                    },
                     child: Text(
-                      'Mulai bermain',
+                      'Mulai dengan Al-Fatihah',
                       style: TextStyle(color: Colors.teal[800]),
                     ),
                     color: Colors.grey[100],

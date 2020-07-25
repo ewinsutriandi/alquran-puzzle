@@ -30,7 +30,9 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
     _statsSura = GetIt.I<StatsAPI>().getSuraStats(_sura);
     _puzzle = JumbledTextPuzzle(_sura.contents);
     _puzzle.onCheck.listen(this._postCheck);
-    widget.ayaNumber == null ? newPuzzle() : newPuzzleFromAya();
+    widget.ayaNumber == null
+        ? newPuzzle()
+        : newPuzzleFromAya(widget.ayaNumber - 1);
   }
 
   void newPuzzle() {
@@ -42,9 +44,9 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
     setState(() {});
   }
 
-  void newPuzzleFromAya() {
+  void newPuzzleFromAya(int ayaNumber) {
     debugPrint('new puzzle from aya');
-    currentPosition = widget.ayaNumber - 1;
+    currentPosition = ayaNumber;
     _puzzle.newGameOnTextIdx(currentPosition);
     _screenStatus = ScreenStatus.showpuzzle;
     _prepareTiles();
@@ -173,17 +175,76 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
   }
 
   Widget _simplePopup() {
-    return PopupMenuButton<int>(
-      child: Chip(
-        label: Icon(
-          Icons.code,
-          size: 19,
-          color: Colors.orange,
-        ),
-        backgroundColor: Colors.white,
-      ),
-      itemBuilder: (context) => _popupMenuItemBuilder(),
-      onSelected: (value) => print(value),
+    return FutureBuilder(
+      future: _statsSura,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          StatsSura stats = snapshot.data;
+          return PopupMenuButton<int>(
+            child: Chip(
+              label: Icon(
+                Icons.code,
+                size: 19,
+                color: Colors.orange,
+              ),
+              backgroundColor: Colors.white,
+            ),
+            itemBuilder: (context) => _popupMenuItemBuilder(),
+            onSelected: (value) {
+              int gotoIdx = 0;
+              if (value == 0) {
+                if (_puzzle.currentIdx > 0) {
+                  gotoIdx = _puzzle.currentIdx - 1;
+                } else {
+                  Scaffold.of(context).showSnackBar(
+                      SnackBar(content: Text('Sudah di awal surat')));
+                  return;
+                }
+              } else if (value == 1) {
+                if (_puzzle.currentIdx > 0) {
+                  gotoIdx = _puzzle.currentIdx - 1;
+                } else {
+                  Scaffold.of(context).showSnackBar(
+                      SnackBar(content: Text('Sudah di awal surat')));
+                  return;
+                }
+              } else if (value == 2) {
+                if (!_puzzle.endOfIdx) {
+                  gotoIdx = _puzzle.currentIdx + 1;
+                } else {
+                  Scaffold.of(context).showSnackBar(
+                      SnackBar(content: Text('Sudah di akhir surat')));
+                  return;
+                }
+              } else if (value == 3) {
+                if (!stats.completed) {
+                  gotoIdx = stats.firstUncomplete;
+                } else {
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text('Seluruh ayat sudah diselesaikan')));
+                  return;
+                }
+              } else if (value == 4) {
+                if (!_puzzle.endOfIdx) {
+                  gotoIdx = stats.totalAya - 1;
+                } else {
+                  Scaffold.of(context).showSnackBar(
+                      SnackBar(content: Text('Sudah di akhir surat')));
+                  return;
+                }
+              }
+              debugPrint('Jump to verse index $gotoIdx');
+              setState(() {
+                newPuzzleFromAya(gotoIdx);
+              });
+            },
+          );
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 
@@ -192,15 +253,15 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
     List<String> captions = [
       'Awal surat',
       'Ayat sebelumnya',
-      'Ayat yang belum diselesaikan',
       'Ayat berikutnya',
+      'Ayat yang belum diselesaikan',
       'Akhir surat'
     ];
     List<IconData> icons = [
       Icons.first_page,
       Icons.navigate_before,
-      Icons.compare_arrows,
       Icons.navigate_next,
+      Icons.compare_arrows,
       Icons.last_page
     ];
     for (int i = 0; i < captions.length; i++) {
@@ -305,7 +366,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
                 child: Text(
                   endOfSura ? 'Kembali' : 'Lanjut',
                 ),
-                //color: Colors.orange,
+                color: Colors.white,
                 onPressed: () {
                   if (endOfSura) {
                     Navigator.of(context).pop();

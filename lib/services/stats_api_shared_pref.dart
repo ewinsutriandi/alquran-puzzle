@@ -13,11 +13,16 @@ class StatsApiSharedPrefImpl implements StatsAPI {
     List<int> freq = await _readStats();
     int ayaSolved = 0, gamePlayed = 0;
     int minCompletion = freq[s.start];
+    int firstUncompleted = -1;
     for (int i = s.start; i < s.start + s.totalAyas; i++) {
       int aFreq = freq[i];
       gamePlayed += aFreq;
       if (aFreq > 0) {
         ayaSolved++;
+      } else {
+        if (firstUncompleted == -1) {
+          firstUncompleted = i - s.start;
+        }
       }
       minCompletion > aFreq ? minCompletion = aFreq : null;
     }
@@ -25,7 +30,8 @@ class StatsApiSharedPrefImpl implements StatsAPI {
         gamePlayed: gamePlayed,
         ayaSolved: ayaSolved,
         totalAya: s.totalAyas,
-        completionCount: minCompletion);
+        completionCount: minCompletion,
+        firstUncomplete: firstUncompleted);
     return stats;
   }
 
