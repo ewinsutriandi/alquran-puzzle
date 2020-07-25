@@ -30,9 +30,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
     _statsSura = GetIt.I<StatsAPI>().getSuraStats(_sura);
     _puzzle = JumbledTextPuzzle(_sura.contents);
     _puzzle.onCheck.listen(this._postCheck);
-    widget.ayaNumber == null
-        ? newPuzzle()
-        : newPuzzleFromAya(widget.ayaNumber - 1);
+    widget.ayaNumber == null ? newPuzzle() : newPuzzleFromAya(widget.ayaNumber);
   }
 
   void newPuzzle() {
