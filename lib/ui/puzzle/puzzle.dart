@@ -397,7 +397,17 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
 
     Widget col = Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[_position(), _hint(), reorWrap],
+      children: <Widget>[
+        _position(),
+        _hint(),
+        reorWrap,
+        IconButton(
+            icon: Icon(Icons.flag),
+            color: Colors.grey[400],
+            onPressed: () {
+              _displayOriginalTextAsModal();
+            })
+      ],
     );
 
     return Container(
@@ -405,6 +415,42 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
       decoration: BoxDecoration(color: Colors.orange[50]),
       child: col,
     );
+  }
+
+  void _displayOriginalTextAsModal() {
+    Dialog d = new Dialog(
+        insetPadding: EdgeInsets.all(4),
+        child: Container(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('Surat ${_sura.tIndonesia} ayat ke-$ayaNumber'),
+              SizedBox(
+                height: 8,
+              ),
+              Text(
+                _puzzle.originalText(),
+                textDirection: TextDirection.rtl,
+                style: TextStyle(fontSize: 25),
+              ),
+              SizedBox(
+                height: 8,
+              ),
+              Text(_sura.contentsTrans[currentPosition]),
+              SizedBox(
+                height: 8,
+              ),
+              IconButton(
+                icon: Icon(Icons.close),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            ],
+          ),
+        ));
+    showDialog(context: context, child: d);
   }
 
   void _prepareTiles() {
