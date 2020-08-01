@@ -22,16 +22,20 @@ class JumbledTextPuzzle {
       _textIdx = -1;
     }
     _textIdx++;
+    splitAndShuffle();
+  }
+
+  void newGameOnTextIdx(int idx) {
+    _textIdx = idx;
+    splitAndShuffle();
+  }
+
+  void splitAndShuffle() {
     _originalText = _texts[_textIdx];
     _splitText();
     while (_correctOrder()) {
       _splittedTexts.shuffle();
     }
-  }
-
-  void newGameOnTextIdx(int idx) {
-    _textIdx = idx - 1;
-    newGame();
   }
 
   void setChoppingRules(int minSegment, int maxSegment, int chrMax) {

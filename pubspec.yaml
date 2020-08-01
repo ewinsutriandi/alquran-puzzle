@@ -20,6 +20,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: '^0.7.3'
 
 flutter:
 
@@ -31,4 +32,9 @@ flutter:
     - assets/tanzil/quran-simple.txt
     - assets/tanzil/id.indonesian.txt
 
-    
+flutter_icons:
+  android: 'launcher_icon'
+  ios: false
+  image_path: 'assets/icon/icon.png'
+  adaptive_icon_background: 'assets/icon/background.png'
+  adaptive_icon_foreground: 'assets/icon/foreground.png'

@@ -157,10 +157,11 @@ class LastSessionRecordState extends State<LastSessionRecord> {
                       puzzle = SuraPuzzlePage(sura: nextSura);
                     } else {
                       debugPrint(
-                          'LAST SESS open ${s.name} next aya based on last session activity');
+                          'LAST SESS open ${s.name} : ${ls.ayaNumber + 1} (next aya) based on last session activity');
+                      int nextAya = ls.ayaNumber + 1;
                       puzzle = SuraPuzzlePage(
                         sura: s,
-                        ayaNumber: ls.ayaNumber,
+                        ayaNumber: nextAya,
                       );
                     }
                     Navigator.push(context, AppRouteTransition(toPage: puzzle))

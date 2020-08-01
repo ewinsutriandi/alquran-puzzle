@@ -21,7 +21,8 @@ class StatsApiSharedPrefImpl implements StatsAPI {
         ayaSolved++;
       } else {
         if (firstUncompleted == -1) {
-          firstUncompleted = i - s.start;
+          firstUncompleted =
+              i - s.start + 1; // first aya that is not completed, start at 1
         }
       }
       minCompletion > aFreq ? minCompletion = aFreq : null;
@@ -51,11 +52,10 @@ class StatsApiSharedPrefImpl implements StatsAPI {
     debugPrint(
         'Record completion stats to shared pref ${s.name} $ayaNumber $completed');
     List<int> freq = await _readStats();
-    int cnt = freq[s.start + ayaNumber];
-    cnt++;
-    freq[s.start + ayaNumber] = cnt;
-    _saveStats(freq).then(
-        (value) => _recordLastSession(s, ayaNumber + 1, completed ? 1 : 0));
+    int idx = s.start + ayaNumber - 1; // idx of current aya in whole qur'an
+    freq[idx] = freq[idx] + 1; // increase completion count by 1
+    _saveStats(freq)
+        .then((value) => _recordLastSession(s, ayaNumber, completed ? 1 : 0));
   }
 
   Future<List<int>> _readStats() async {

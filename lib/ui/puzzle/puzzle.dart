@@ -22,7 +22,8 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
   JumbledTextPuzzle _puzzle;
   ScreenStatus _screenStatus;
   List<Widget> _tiles;
-  int currentPosition = 0;
+  int currentPosition = -1; // text position in array index, 0 is first
+  int get ayaNumber => currentPosition + 1; // aya number, 1 is first
   @override
   initState() {
     super.initState();
@@ -43,8 +44,8 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
   }
 
   void newPuzzleFromAya(int ayaNumber) {
-    debugPrint('new puzzle from aya');
-    currentPosition = ayaNumber;
+    debugPrint('new puzzle from aya number $ayaNumber');
+    currentPosition = ayaNumber - 1;
     _puzzle.newGameOnTextIdx(currentPosition);
     _screenStatus = ScreenStatus.showpuzzle;
     _prepareTiles();
@@ -162,7 +163,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
                   width: 27,
                 ),
                 Center(
-                  child: Text('Ayat ke-$currentPosition'),
+                  child: Text('Ayat ke-$ayaNumber'),
                 ),
                 SizedBox(
                   width: 4,
@@ -189,10 +190,10 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
             ),
             itemBuilder: (context) => _popupMenuItemBuilder(),
             onSelected: (value) {
-              int gotoIdx = 0;
+              int gotoIdx; // go to first position
               if (value == 0) {
                 if (_puzzle.currentIdx > 0) {
-                  gotoIdx = _puzzle.currentIdx - 1;
+                  gotoIdx = 0;
                 } else {
                   Scaffold.of(context).showSnackBar(
                       SnackBar(content: Text('Sudah di awal surat')));
@@ -231,9 +232,10 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
                   return;
                 }
               }
-              debugPrint('Jump to verse index $gotoIdx');
+              int ayaNumber = gotoIdx + 1;
+              debugPrint('Jump to verse number $ayaNumber');
               setState(() {
-                newPuzzleFromAya(gotoIdx);
+                newPuzzleFromAya(ayaNumber);
               });
             },
           );
@@ -251,7 +253,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
     List<String> captions = [
       'Awal surat',
       'Ayat sebelumnya',
-      'Ayat berikutnya',
+      'Ayat selanjutnya',
       'Ayat yang belum diselesaikan',
       'Akhir surat'
     ];
@@ -335,7 +337,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text('Ayat ke-$currentPosition'),
+                Text('Ayat ke-$ayaNumber'),
               ],
             ),
             SizedBox(
@@ -353,7 +355,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
               ],
             ),
             Text(
-              _sura.contentsTrans[currentPosition - 1],
+              _sura.contentsTrans[currentPosition],
               textAlign: TextAlign.center,
               //style: puzzleTextStyle,
             ),
@@ -362,7 +364,7 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
             ),
             RaisedButton(
                 child: Text(
-                  endOfSura ? 'Kembali' : 'Lanjut',
+                  endOfSura ? 'Kembali' : 'Ayat selanjutnya',
                 ),
                 color: Colors.white,
                 onPressed: () {
@@ -429,9 +431,9 @@ class SuraPuzzlePageState extends State<SuraPuzzlePage> {
 
   void _postCheck(bool correct) {
     if (correct) {
-      print('correct');
+      print('correct: $ayaNumber');
       GetIt.I<StatsAPI>()
-          .recordCompletion(_sura, _puzzle.currentIdx, _puzzle.endOfIdx)
+          .recordCompletion(_sura, ayaNumber, _puzzle.endOfIdx)
           .then((value) {
         _statsSura = GetIt.I<StatsAPI>().getSuraStats(_sura);
         setState(() {
