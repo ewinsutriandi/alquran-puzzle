@@ -8,7 +8,7 @@ import 'package:juz_amma_puzzle/ui/home/progress_juz.dart';
 import 'package:juz_amma_puzzle/ui/home/recommend.dart';
 
 class Home extends StatefulWidget {
-  static String _userName = 'Pengguna Baru';
+  //static String _userName = 'Pengguna Baru';
   @override
   HomeState createState() => HomeState();
 }
@@ -51,7 +51,10 @@ class HomeState extends State<Home> {
             _caption('SESI TERAKHIR'),
             LastSessionRecord(reload),
             _caption('REKOMENDASI'),
-            Recommend(reload)
+            Recommend(reload),
+            SizedBox(
+              height: 8,
+            )
           ],
         ),
       ),
