@@ -52,8 +52,8 @@ class JumbledTextPuzzle {
     if (_spaceBetweenChops) {
       joined = _splittedTexts.join(' ');
     }
-    debugPrint(joined);
-    debugPrint(this._originalText);
+    debugPrint('JUMBLED FRAG input: $joined');
+    debugPrint('JUMBLED FRAG  orig: $_originalText');
     return (joined == _originalText);
   }
 
@@ -128,13 +128,23 @@ class JumbledTextPuzzle {
     List<String> words = _originalText.split(' ');
     int wordCount = words.length;
     //int wordCountPerSegment = (wordCount / _maxSegment).floor();
+    int division = (wordCount / _maxSegment).floor();
     int remainder = wordCount % _maxSegment;
+    debugPrint(
+        'JUMBLED FRAG wordcount = $wordCount, div = $division, rem = $remainder ');
     String segment;
     int wordPos = 0;
     _splittedTexts = [];
     for (int i = 0; i < _maxSegment; i++) {
-      segment = words[wordPos];
-      wordPos++;
+      segment = '';
+      for (int d = 0; d < division; d++) {
+        if (segment == '') {
+          segment = words[wordPos];
+        } else {
+          segment += ' ' + words[wordPos];
+        }
+        wordPos++;
+      }
       if (i < remainder) {
         //segment += words[wordPos];
         segment += ' ' + words[wordPos];
