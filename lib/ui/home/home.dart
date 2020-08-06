@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:juz_amma_puzzle/ui/feedback/email_feedback.dart';
 import 'package:juz_amma_puzzle/ui/home/hello.dart';
 import 'package:juz_amma_puzzle/ui/home/last_session.dart';
 import 'package:juz_amma_puzzle/ui/home/progress_all.dart';
@@ -52,6 +53,7 @@ class HomeState extends State<Home> {
             LastSessionRecord(reload),
             _caption('REKOMENDASI'),
             Recommend(reload),
+            _feedback(),
             SizedBox(
               height: 8,
             )
@@ -67,6 +69,22 @@ class HomeState extends State<Home> {
       child: Text(
         text,
         style: _captionStyle,
+      ),
+    );
+  }
+
+  Widget _feedback() {
+    return Container(
+      padding: EdgeInsets.all(16),
+      child: Center(
+        child: RaisedButton(
+          child: Text('Kirim Masukan'),
+          color: Colors.blue,
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => FeedbackForm()));
+          },
+        ),
       ),
     );
   }
