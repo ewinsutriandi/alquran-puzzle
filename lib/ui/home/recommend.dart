@@ -18,41 +18,46 @@ class RecommendState extends State<Recommend> {
 
   @override
   Widget build(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.fromLTRB(4, 16, 4, 8),
+        decoration: BoxDecoration(
+            //color: Colors.indigo[200],
+            borderRadius: BorderRadius.all(Radius.circular(8))),
+        child: _recommendations());
+  }
+
+  Widget _recommendations() {
     return FutureBuilder(
       future: Recommender.getRecommendation(3),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           List<Sura> recs = snapshot.data;
-          return Container(
-            //padding: EdgeInsets.all(0),
-            //constraints: BoxConstraints.expand(),
-            child: Row(
-                //crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Expanded(
-                      child: _recommend(
-                    recs[0],
-                    Colors.purple[50],
-                    Colors.purple[600],
-                  )),
-                  SizedBox(width: 4),
-                  Expanded(
-                      child: _recommend(
-                    recs[1],
-                    Colors.brown[50],
-                    Colors.brown[600],
-                  )),
-                  SizedBox(width: 4),
-                  Expanded(
+          return Row(
+              //crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Expanded(
                     child: _recommend(
-                      recs[2],
-                      Colors.indigo[50],
-                      Colors.indigo[600],
-                    ),
-                  )
-                ]),
-          );
+                  recs[0],
+                  Colors.purple[50],
+                  Colors.purple[600],
+                )),
+                SizedBox(width: 4),
+                Expanded(
+                    child: _recommend(
+                  recs[1],
+                  Colors.brown[50],
+                  Colors.brown[600],
+                )),
+                SizedBox(width: 4),
+                Expanded(
+                  child: _recommend(
+                    recs[2],
+                    Colors.indigo[50],
+                    Colors.indigo[600],
+                  ),
+                )
+              ]);
         } else {
           return Center(
             child: CircularProgressIndicator(),

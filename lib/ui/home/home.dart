@@ -7,6 +7,7 @@ import 'package:juz_amma_puzzle/ui/home/last_session.dart';
 import 'package:juz_amma_puzzle/ui/home/progress_all.dart';
 import 'package:juz_amma_puzzle/ui/home/progress_juz.dart';
 import 'package:juz_amma_puzzle/ui/home/recommend.dart';
+import 'package:juz_amma_puzzle/ui/theme.dart';
 
 class Home extends StatefulWidget {
   //static String _userName = 'Pengguna Baru';
@@ -53,7 +54,7 @@ class HomeState extends State<Home> {
             LastSessionRecord(reload),
             _caption('REKOMENDASI'),
             Recommend(reload),
-            _feedback(),
+            //_feedback(),
             SizedBox(
               height: 8,
             )
@@ -77,15 +78,23 @@ class HomeState extends State<Home> {
     return Container(
       padding: EdgeInsets.all(16),
       child: Center(
+          child: ButtonTheme(
+        minWidth: 50.0,
+        //height: 25,
         child: RaisedButton(
-          child: Text('Kirim Masukan'),
-          color: Colors.blue,
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => FeedbackForm()));
+            Navigator.push(context, AppRouteTransition(toPage: FeedbackForm()));
           },
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4.0),
+          ),
+          child: Text(
+            'Kirim Masukan',
+            style: TextStyle(color: Colors.white),
+          ),
+          color: Colors.blue[500],
         ),
-      ),
+      )),
     );
   }
 }

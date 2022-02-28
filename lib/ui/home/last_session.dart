@@ -40,6 +40,15 @@ class LastSessionRecordState extends State<LastSessionRecord> {
   String lastCorrectAya;
   @override
   Widget build(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+        decoration: BoxDecoration(
+            color: widget._bgColor,
+            borderRadius: BorderRadius.all(Radius.circular(16))),
+        child: _details());
+  }
+
+  Widget _details() {
     return FutureBuilder(
       future: GetIt.I<StatsAPI>().lastSession(),
       builder: (context, snapshot) {
@@ -51,53 +60,56 @@ class LastSessionRecordState extends State<LastSessionRecord> {
             details = _sessionDetails(ls);
           } else {
             debugPrint('ls is null');
-            details = Container(
-              padding: EdgeInsets.all(8),
-              child: Center(
-                  child: Column(
-                children: <Widget>[
-                  Text('Belum ada data'),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    onPressed: () {
-                      Sura alFatiha = GetIt.I<QuranData>().getByIndex(1);
-                      Navigator.push(
-                              context,
-                              AppRouteTransition(
-                                  toPage: SuraPuzzlePage(sura: alFatiha)))
-                          .then((value) {
-                        setState(() {});
-                        debugPrint('LAST SESS - opening Al-Fatiha');
-                        widget.callback();
-                      });
-                    },
-                    child: Text(
-                      'Mulai dengan Al-Fatihah',
-                      style: TextStyle(color: Colors.teal[800]),
-                    ),
-                    color: Colors.grey[100],
-                  ),
-                ],
-              )),
-            );
+            details = _noSession();
           }
-          return Container(
-              padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-              decoration: BoxDecoration(
-                  color: widget._bgColor,
-                  borderRadius: BorderRadius.all(Radius.circular(16))),
-              child: details);
+          //return details;
+          return AnimatedSwitcher(
+            duration: Duration(milliseconds: 500),
+            child: details,
+          );
         } else {
           return Center(
             child: CircularProgressIndicator(),
           );
         }
       },
+    );
+  }
+
+  Widget _noSession() {
+    return Container(
+      padding: EdgeInsets.all(8),
+      child: Center(
+          child: Column(
+        children: <Widget>[
+          Text('Belum ada data'),
+          SizedBox(
+            height: 4,
+          ),
+          RaisedButton(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
+            ),
+            onPressed: () {
+              Sura alFatiha = GetIt.I<QuranData>().getByIndex(1);
+              Navigator.push(
+                      context,
+                      AppRouteTransition(
+                          toPage: SuraPuzzlePage(sura: alFatiha)))
+                  .then((value) {
+                setState(() {});
+                debugPrint('LAST SESS - opening Al-Fatiha');
+                widget.callback();
+              });
+            },
+            child: Text(
+              'Mulai dengan Al-Fatihah',
+              style: TextStyle(color: Colors.teal[800]),
+            ),
+            color: Colors.grey[100],
+          ),
+        ],
+      )),
     );
   }
 

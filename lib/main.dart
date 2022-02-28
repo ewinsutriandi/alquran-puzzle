@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:juz_amma_puzzle/data/quran_data.dart';
 import 'package:juz_amma_puzzle/services/service_locator.dart';
+import 'package:juz_amma_puzzle/ui/feedback/email_feedback.dart';
 import 'package:juz_amma_puzzle/ui/home/home.dart';
 import 'package:juz_amma_puzzle/ui/theme.dart';
 
@@ -63,7 +64,7 @@ class _MyAppState extends State<MyApp> {
       ),
     ),
     _underConstruction(),
-    _underConstruction(),
+    FeedbackForm(),
     _underConstruction(),
   ];
 
@@ -87,7 +88,7 @@ class _MyAppState extends State<MyApp> {
       items: <Widget>[
         Icon(Icons.home, color: fgColor),
         Icon(Icons.help, color: fgColor),
-        Icon(Icons.settings, color: fgColor),
+        Icon(Icons.add_comment, color: fgColor),
         Icon(Icons.share, color: fgColor),
       ],
       onTap: (index) {

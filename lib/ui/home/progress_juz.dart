@@ -38,40 +38,44 @@ class ProgressJuzAmma extends StatefulWidget {
 class ProgressJuzAmmaState extends State<ProgressJuzAmma> {
   @override
   Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
+      decoration: BoxDecoration(
+          color: widget._bgColor,
+          border: Border.all(
+            color: widget._bgColor,
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(16))),
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              'JUZ 30',
+              style: widget.captionStyle,
+            ),
+            SizedBox(
+              height: 8,
+            ),
+            _progress()
+          ]),
+    );
+  }
+
+  Widget _progress() {
     return FutureBuilder(
       future: GetIt.I<StatsAPI>()
           .getStatsGroup(GetIt.I<QuranData>().suraListJuzAmma),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           StatsGroup stats = snapshot.data;
-          return Container(
-            padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
-            decoration: BoxDecoration(
-                color: widget._bgColor,
-                border: Border.all(
-                  color: widget._bgColor,
-                ),
-                borderRadius: BorderRadius.all(Radius.circular(16))),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    'JUZ 30',
-                    style: widget.captionStyle,
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    children: <Widget>[
-                      _progressPct(stats.progressAya),
-                      SizedBox(
-                        width: 6,
-                      ),
-                      _progressCnt(stats)
-                    ],
-                  )
-                ]),
+          return Row(
+            children: <Widget>[
+              _progressPct(stats.progressAya),
+              SizedBox(
+                width: 6,
+              ),
+              _progressCnt(stats)
+            ],
           );
         } else {
           return Center(
